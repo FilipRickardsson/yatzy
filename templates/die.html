@@ -1,7 +1,6 @@
 Die.addTemplate('default', function(){return `
 
-<div id="die${this.id}" class="die">
-    &#x2680;
-</div>
+<div id="die${this.id}" class="die" data-bind-1="dots">
+    ${this.dots} </div>
 
 `});
