@@ -1,11 +1,12 @@
 class App {
 
-  constructor(){
+    constructor() {
+        var die = new Die();
+        die.display('body');
+    }
 
-  }
+    start() {
 
-  start(){
-
-  }
+    }
 
 }
