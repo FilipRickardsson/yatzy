@@ -1,29 +1,30 @@
 Lobby.addTemplate('default', function(){ return `
 <div class="container">
 	<h1>Choose number of players</h1>
-	<!------------- Large button group ----------------------------->
+	<!-- Large button group -->
 	<div class="btn-group">
 		<button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Large button
   </button>
 	</div>
-	<!------------- Large button group ----------------------------->
-	<!------------- Large button group ----------------------------->
+	<!-- Large button group -->
+	<!-- Large button group -->
 	<div class="btn-group">
 		<button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Large button
   </button>
 	</div>
-	<!------------- Large button group ----------------------------->
-	<!------------- Dropdown ------------------------------->
+	<!-- Large button group -->
+	<!-- Dropdown -->
 	
 	<div id="dropdown">
 		<label for="selectPlayer">Number of players</label>
-		<select id="selectPlayer" name="selectPlayer">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
+		<select id="selectPlayer"  data-change="groupSize" name="selectPlayer">
+			<option id="0">choose</option>
+			<option id="1">1</option>
+			<option id="2">2</option>
+			<option id="3">3</option>
+			<option id="4">4</option>
 			<option value="5">5</option>
 			<option value="6">6</option>
 			<option value="7">7</option>
@@ -32,8 +33,10 @@ Lobby.addTemplate('default', function(){ return `
 			<option value="10">10</option>
 		</select>
 	</div>
-	<!------------- Dropdown ------------------------------->
-
+	<!-- Dropdown -->
+<div class="inputFields">
+	
+</div>
 
 </div>
 `})
