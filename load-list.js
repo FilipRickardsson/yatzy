@@ -23,9 +23,10 @@ window.load = `
   
   js/classes/
     app.class.js
+     die.class.js   
 
   templates/
-
+   die.html
   js/main.js
 
 `;
