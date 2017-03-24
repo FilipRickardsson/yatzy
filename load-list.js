@@ -25,10 +25,12 @@ window.load = `
     app.class.js
     die.class.js   
     lobby.class.js
+    protocol.class.js
 
   templates/
     die.html
     lobby.html
+    protocol.html
 
   js/main.js
 
