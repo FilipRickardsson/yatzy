@@ -20,13 +20,16 @@ window.load = `
     base.class.js
     list.class.js
     router.class.js
-  
+	
   js/classes/
     app.class.js
-     die.class.js   
+    die.class.js   
+    lobby.class.js
 
   templates/
-   die.html
+    die.html
+    lobby.html
+
   js/main.js
 
 `;
