@@ -2,6 +2,7 @@ class Die extends Base {
 
     constructor(propertyValues) {
         super(propertyValues);
+        this.enabled = true;
     }
 
     rollTheDice() {
@@ -15,5 +16,10 @@ class Die extends Base {
     getDots() {
         return this.dots;
     }
-    
+    toggleDie() {
+        console.log(this.enabled);
+        this.enabled = !this.enabled;
+        $('.die' + this.id).toggleClass("dieDisabled");
+
+    }
 }
