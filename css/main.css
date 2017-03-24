@@ -1,3 +1,5 @@
+.die {}
+
 .die a {
     font-size: 150px;
     text-decoration: none;
@@ -13,4 +15,13 @@ a:active {
 
 .dieDisabled a {
     color: red;
+}
+
+h2 {
+    text-align: center;
+}
+
+.table table-bordered td,
+tr {
+    padding: 0px;
 }
