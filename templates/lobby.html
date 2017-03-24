@@ -1,25 +1,11 @@
 Lobby.addTemplate('default', function(){ return `
 <div class="container">
-	<h1>Choose number of players</h1>
-	<!-- Large button group -->
-	<div class="btn-group">
-		<button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Large button
-  </button>
-	</div>
-	<!-- Large button group -->
-	<!-- Large button group -->
-	<div class="btn-group">
-		<button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Large button
-  </button>
-	</div>
-	<!-- Large button group -->
-	<!-- Dropdown -->
-	
-	<div id="dropdown">
-		<label for="selectPlayer">Number of players</label>
-		<select id="selectPlayer"  data-change="groupSize" name="selectPlayer">
+    <h1>Choose number of players</h1>
+
+    <!-- Dropdown -->
+    <div id="dropdown">
+        <label for="selectPlayer">Number of players</label>
+        <select id="selectPlayer" data-change="groupSize" name="selectPlayer">
 			<option id="0">choose</option>
 			<option id="1">1</option>
 			<option id="2">2</option>
@@ -32,11 +18,22 @@ Lobby.addTemplate('default', function(){ return `
 			<option value="9">9</option>
 			<option value="10">10</option>
 		</select>
-	</div>
-	<!-- Dropdown -->
-<div class="inputFields">
-	
-</div>
+    </div>
+
+    <!-- Dropdown -->
+    <div class="inputFields">
+
+    </div>
+
+    <!-- Large button group -->
+    <div class="btn-group">
+        <button class="btn btn-default btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Statistics</button>
+    </div>
+    
+    <!-- Large button group -->
+    <div class="btn-group">
+        <button class="btn btn-default btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Start Game</button>
+    </div>
 
 </div>
 `})
