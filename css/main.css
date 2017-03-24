@@ -14,3 +14,7 @@ a:active {
 .dieDisabled a {
     color: red;
 }
+
+.error {
+    color: red;
+}

@@ -14,6 +14,7 @@ class Lobby extends Base {
 			         <input type="text" class="form-control" placeholder="Player: " aria-describedby="basic-addon1" >
 			     </div>`);
         }
+        $('.error').addClass('hidden');
     }
 
     startGame() {
@@ -22,7 +23,7 @@ class Lobby extends Base {
         if (temp) {
             console.log("Start the bloody game!");
         } else {
-            console.log("Error msg!");
+            $('.error').removeClass('hidden');
         }
     }
 
