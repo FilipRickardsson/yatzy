@@ -1,5 +1,6 @@
-.die {
+.die a {
     font-size: 150px;
+    text-decoration: none;
 }
 
 a,
