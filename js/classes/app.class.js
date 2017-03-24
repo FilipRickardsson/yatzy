@@ -7,9 +7,10 @@ class App {
 
         var lobby = new Lobby();
         lobby.display('body');
-        
+        lobby.groupSize();
+
         die.display('body');
         die.rollTheDice();
     }
-    
+
 }
