@@ -17,9 +17,21 @@ class Lobby extends Base {
 	}
 	startGame() {
 		console.log("startGame()");
+		console.log(this.checkInputFields());
 	}
 
 	showStatistics() {
 		console.log("showStatistics()");
+	}
+
+	checkInputFields() {
+		var filled = true;
+		$('input').each(function () {
+			if ($(this).val().length === 0) {
+				filled = false;
+				return filled;
+			}
+		});
+		return filled;
 	}
 }
