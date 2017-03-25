@@ -28,7 +28,8 @@ class GameBoard extends Base {
 	calcPotentialPoints() {
 		var points = [];
 		points = points.concat(this.calcFirstHalf());
-		points.push(this.checkPair());
+		points.push(this.checkPairs(2));
+		points.push(this.checkPairs(4));
 		console.log('Points: ', points);
 	}
 
@@ -47,7 +48,7 @@ class GameBoard extends Base {
 		return firstHalfPoints;
 	}
 
-	checkPair() {
+	checkPairs(nbrOfOccurences) {
 		var points = 0;
 		var occurences = 0;
 		for (let i = 6; i > 0; i--) {
@@ -56,8 +57,8 @@ class GameBoard extends Base {
 					occurences++;
 				}
 			}
-			if (occurences >= 2) {
-				points = i * 2;
+			if (occurences >= nbrOfOccurences) {
+				points = i * nbrOfOccurences;
 				break;
 			}
 			occurences = 0;
