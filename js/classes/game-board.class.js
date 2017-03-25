@@ -31,6 +31,11 @@ class GameBoard extends Base {
 		points.push(this.checkOccurences(2));
 		points.push(this.checkOccurences(4));
 		points.push(this.checkOccurences(3));
+
+
+		points.push(this.checkYatzy());
+		points.push(this.calcChance());
+
 		console.log('Points: ', points);
 	}
 
@@ -63,6 +68,31 @@ class GameBoard extends Base {
 				break;
 			}
 			occurences = 0;
+		}
+		return points;
+	}
+
+	checkYatzy() {
+		var yatzy = false;
+		var occurences = 0;
+		for (let i = 6; i > 0; i--) {
+			for (let j = 0; j < this.dice.length; j++) {
+				if (this.dice[j].getDots() == i) {
+					occurences++;
+				}
+			}
+			if (occurences === 5) {
+				return 50;
+			}
+			occurences = 0;
+		}
+		return 0;
+	}
+
+	calcChance() {
+		var points = 0;
+		for (let i = 0; i < this.dice.length; i++) {
+			points += this.dice[i].getDots();
 		}
 		return points;
 	}
