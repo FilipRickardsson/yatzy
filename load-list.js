@@ -25,10 +25,12 @@ window.load = `
     app.class.js
     die.class.js   
     lobby.class.js
+    game-board.class.js
 
   templates/
     die.html
     lobby.html
+    game-board.html
 
   js/main.js
 
