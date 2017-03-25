@@ -9,5 +9,11 @@ class Statistics extends Base {
 		});
 	}
 
+	backToLobby() {
+		$('body').empty();
+		var lobby = new Lobby();
+		lobby.display('body');
+		lobby.groupSize();
+	}
 
 }
