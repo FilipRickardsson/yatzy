@@ -28,6 +28,7 @@ class GameBoard extends Base {
 	calcPotentialPoints() {
 		var points = [];
 		points = points.concat(this.calcFirstHalf());
+		points.push(this.checkPair());
 		console.log('Points: ', points);
 	}
 
@@ -44,6 +45,24 @@ class GameBoard extends Base {
 			points = 0;
 		}
 		return firstHalfPoints;
+	}
+
+	checkPair() {
+		var points = 0;
+		var occurences = 0;
+		for (let i = 6; i > 0; i--) {
+			for (let j = 0; j < this.dice.length; j++) {
+				if (this.dice[j].getDots() == i) {
+					occurences++;
+				}
+			}
+			if (occurences >= 2) {
+				points = i * 2;
+				break;
+			}
+			occurences = 0;
+		}
+		return points;
 	}
 
 }
