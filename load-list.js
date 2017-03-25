@@ -29,6 +29,7 @@ window.load = `
     player-result.class.js
     player-result-list.class.js
     protocol.class.js
+    game-board.class.js
 
   templates/
     die.html
@@ -36,6 +37,7 @@ window.load = `
     statistics.html
     player-result.html
     protocol.html
+    game-board.html
 
   js/main.js
 
