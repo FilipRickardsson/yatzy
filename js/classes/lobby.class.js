@@ -21,15 +21,18 @@ class Lobby extends Base {
 		var temp = this.checkInputFields();
 		console.log(temp);
 		if (temp) {
-			console.log("Start the bloody game!");
+			$('body').empty();
+			var gameBoard = new GameBoard();
+			gameBoard.display('body');
+			gameBoard.createDice();
 		} else {
 			$('.error').removeClass('hidden');
 		}
 	}
 
 	showStatistics() {
+		$('body').empty();
 		var statistics = new Statistics();
-
 		statistics.display('body');
 	}
 
