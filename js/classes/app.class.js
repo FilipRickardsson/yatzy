@@ -11,6 +11,8 @@ class App {
 
         die.display('body');
         die.rollTheDice();
+        var protocol = new Protocol();
+        protocol.display('body')
     }
 
 }

@@ -25,15 +25,17 @@ window.load = `
     app.class.js
     die.class.js   
     lobby.class.js
-	statistics.class.js
-	player-result.class.js
-	player-result-list.class.js
+    statistics.class.js
+    player-result.class.js
+    player-result-list.class.js
+    protocol.class.js
 
   templates/
     die.html
     lobby.html
-	statistics.html
-	player-result.html
+    statistics.html
+    player-result.html
+    protocol.html
 
   js/main.js
 
