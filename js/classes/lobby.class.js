@@ -25,6 +25,7 @@ class Lobby extends Base {
 			var gameBoard = new GameBoard();
 			gameBoard.display('body');
 			gameBoard.createDice();
+			gameBoard.createProtocol();
 		} else {
 			$('.error').removeClass('hidden');
 		}

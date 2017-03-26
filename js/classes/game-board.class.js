@@ -13,9 +13,6 @@ class GameBoard extends Base {
 			die.display('#dice');
 			this.dice.push(die);
 		}
-
-		console.log('debug 1');
-		console.log('Dice:', this.dice);
 	}
 
 	rollTheDice() {
@@ -25,13 +22,21 @@ class GameBoard extends Base {
 		this.calcPotentialPoints();
 	}
 
+	createProtocol() {
+		var protocol = new Protocol();
+		protocol.display('#protocol');
+	}
+
 	calcPotentialPoints() {
 		var points = [];
 		points = points.concat(this.calcFirstHalf());
 		points.push(this.checkOccurences(2));
-		points.push(this.checkOccurences(4));
-		points.push(this.checkOccurences(3));
 		points.push(this.checkDoublePair());
+		points.push(this.checkOccurences(3));
+		points.push(this.checkOccurences(4));
+		points.push(this.checkStraight(true));
+		points.push(this.checkStraight(false));
+		points.push(-1);
 
 		points.push(this.checkYatzy());
 		points.push(this.calcChance());
@@ -84,6 +89,25 @@ class GameBoard extends Base {
 			} else if (occurences[i] >= 2) {
 				pair2 = i + 1;
 				return pair1 * 2 + pair2 * 2;
+			}
+		}
+		return 0;
+	}
+
+	checkStraight(smallStraight) {
+		var sortedDots = [];
+		for (let i = 0; i < this.dice.length; i++) {
+			sortedDots.push(this.dice[i].getDots());
+		}
+		sortedDots.sort();
+		
+		if (smallStraight) {
+			if (sortedDots[0] === 1 && sortedDots[1] === 2 && sortedDots[2] === 3 && sortedDots[3] === 4 && sortedDots[4] === 5) {
+				return 15;
+			}
+		} else {
+			if (sortedDots[0] === 2 && sortedDots[1] === 3 && sortedDots[2] === 4 && sortedDots[3] === 5 && sortedDots[4] === 6) {
+				return 20;
 			}
 		}
 		return 0;
