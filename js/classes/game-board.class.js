@@ -31,7 +31,7 @@ class GameBoard extends Base {
 		points.push(this.checkOccurences(2));
 		points.push(this.checkOccurences(4));
 		points.push(this.checkOccurences(3));
-
+		points.push(this.checkDoublePair());
 
 		points.push(this.checkYatzy());
 		points.push(this.calcChance());
@@ -70,6 +70,23 @@ class GameBoard extends Base {
 			occurences = 0;
 		}
 		return points;
+	}
+
+	checkDoublePair() {
+		var occurences = [0, 0, 0, 0, 0, 0];
+		var pair1, pair2;
+		for (let i = 0; i < this.dice.length; i++) {
+			occurences[this.dice[i].getDots() - 1]++;
+		}
+		for (let i = this.dice.length; i >= 0; i--) {
+			if (occurences[i] >= 2 && pair1 === undefined) {
+				pair1 = i + 1;
+			} else if (occurences[i] >= 2) {
+				pair2 = i + 1;
+				return pair1 * 2 + pair2 * 2;
+			}
+		}
+		return 0;
 	}
 
 	checkYatzy() {
