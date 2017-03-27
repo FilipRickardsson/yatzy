@@ -36,10 +36,9 @@ class GameBoard extends Base {
 		points.push(this.checkOccurences(4));
 		points.push(this.checkStraight(true));
 		points.push(this.checkStraight(false));
-		points.push(-1);
-
-		points.push(this.checkYatzy());
+		points.push(this.checkFullHouse());
 		points.push(this.calcChance());
+		points.push(this.checkYatzy());
 
 		console.log('Points: ', points);
 	}
@@ -100,7 +99,7 @@ class GameBoard extends Base {
 			sortedDots.push(this.dice[i].getDots());
 		}
 		sortedDots.sort();
-		
+
 		if (smallStraight) {
 			if (sortedDots[0] === 1 && sortedDots[1] === 2 && sortedDots[2] === 3 && sortedDots[3] === 4 && sortedDots[4] === 5) {
 				return 15;
@@ -110,6 +109,30 @@ class GameBoard extends Base {
 				return 20;
 			}
 		}
+		return 0;
+	}
+
+	checkFullHouse() {
+		var occurences = [0, 0, 0, 0, 0, 0];
+		var threes, pair;
+		for (let i = 0; i < this.dice.length; i++) {
+			occurences[this.dice[i].getDots() - 1]++;
+		}
+		
+		for (let i = this.dice.length; i >= 0; i--) {
+			if (occurences[i] >= 3) {
+				threes = i + 1;
+			}
+		}
+
+		for (let i = this.dice.length; i >= 0; i--) {
+			if (threes && occurences[i] >= 2 && i != threes - 1) {
+				pair = i + 1;
+				console.log('Threes:', threes, 'Pair:	', pair);
+				return threes * 3 + pair * 2;
+			}
+		}
+
 		return 0;
 	}
 
