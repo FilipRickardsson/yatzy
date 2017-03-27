@@ -26,7 +26,9 @@ class Lobby extends Base {
 			gameBoard.display('body');
 			gameBoard.createDice();
 			gameBoard.createProtocol();
-		} else {
+			gameBoard.createColumn();//under testing
+		} 
+		else {
 			$('.error').removeClass('hidden');
 		}
 	}

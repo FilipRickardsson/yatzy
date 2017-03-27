@@ -27,6 +27,14 @@ class GameBoard extends Base {
 		protocol.display('#protocol');
 	}
 
+	createColumn(){
+	//This code is to be changed after testing!!!
+		var column =new Column();
+				column.display('#column');
+				console.log('I am here!!');
+
+}
+
 	calcPotentialPoints() {
 		var points = [];
 		points = points.concat(this.calcFirstHalf());
