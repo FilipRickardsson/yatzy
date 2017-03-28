@@ -1,11 +1,11 @@
 Lobby.addTemplate('default', function(){ return `
 <div class="container">
-    <h1>Choose number of players</h1>
+	<h1>Choose number of players</h1>
 
-    <!-- Dropdown -->
-    <div id="dropdown">
-        <label for="selectPlayer">Number of players</label>
-        <select id="selectPlayer" data-change="groupSize" name="selectPlayer">
+	<!-- Dropdown -->
+	<div id="dropdown">
+		<label for="selectPlayer">Number of players</label>
+		<select id="selectPlayer" data-change="groupSize" name="selectPlayer">
 			<option value="1">1</option>
 			<option selected="selected" value="2">2</option>
 			<option value="3">3</option>
@@ -17,25 +17,29 @@ Lobby.addTemplate('default', function(){ return `
 			<option value="9">9</option>
 			<option value="10">10</option>
 		</select>
-    </div>
+	</div>
 
-    <!-- Dropdown -->
-    <div class="inputFields">
+	<!-- Dropdown -->
+	<div class="inputFields">
 
-    </div>
+	</div>
 
-    <p class="hidden error">Please enter every player\'s name</p>
+	<p class="hidden error">Please enter every player\'s name</p>
 
-    <!-- Large button group -->
-    <div class="btn-group">
-        <button class="btn btn-default btn-lg" type="button" data-click="showStatistics">Statistics</button>
-    </div>
+	<!-- Large button group -->
+	<div class="btn-group">
+		<button class="btn btn-default btn-lg" type="button" data-click="showStatistics">Statistics</button>
+	</div>
 
-    <!-- Large button group -->
-    <div class="btn-group">
-        <button class="btn btn-default btn-lg" type="button" data-click="startGame">Start Game</button>
-    </div>
+	<!-- Large button group -->
+	<div class="btn-group">
+		<button class="btn btn-default btn-lg" type="button" data-click="startGame">Start Game</button>
+	</div>
 
+	<!-- Large button group -->
+	<div class="btn-group">
+		<button class="btn btn-default btn-lg" type="button" data-click="goToEndResult">Temp Button</button>
+	</div>
 
 </div>
 `})

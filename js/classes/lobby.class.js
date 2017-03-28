@@ -36,6 +36,12 @@ class Lobby extends Base {
 		var statistics = new Statistics();
 		statistics.display('body');
 	}
+	
+	goToEndResult() {
+		$('body').empty();
+		var endResult = new EndResult();
+		endResult.display('body');
+	}
 
 	checkInputFields() {
 		var filled = true;
