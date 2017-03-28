@@ -160,5 +160,40 @@ class GameBoard extends Base {
 		}
 		return points;
 	}
+ 
+ 	scorePlayers(id, userName, points){
+ 		this.db.scorePlayers({
+ 		this.id:id,
+ 		this.userName:userName,
+ 		this.points:points,
+ 		})
+ 	}
+
+	scoreGames(id, date){
+		this.db.scoreGames({
+			this.id:id,
+			this.date: date,
+		})
+	}
+
+	gamesHasPlayers(games_id, players_id){
+		this.db.gamesHasPlayers({
+			this.games_id:games_id,
+			this.player_id: players_id,
+		})
+	}
+ 	static get sqlQueries(){
+ 		return {
+ 		scorePlayers:
+ 		`
+ 		INSERT players SET ?
+ 		`,
+ 		scoreGames:
+		`INSERT games SET ?`
+		,
+ 		gamesHasPlayers:
+		`INSERT games_has_players SET ?`
+ 	}
+ 	}
 
 }
