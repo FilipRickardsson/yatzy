@@ -24,16 +24,10 @@ class GameBoard extends Base {
 
 	createProtocol() {
 		var protocol = new Protocol();
-		protocol.display('#protocol');
+		protocol.display('#protocolContainer');
+		console.log('GameBoard:', this.players);
+		protocol.createColumn(this.players);
 	}
-
-	createColumn(){
-	//This code is to be changed after testing!!!
-		var column =new Column();
-				column.display('#column');
-				console.log('I am here!!');
-
-}
 
 	calcPotentialPoints() {
 		var points = [];
@@ -126,7 +120,7 @@ class GameBoard extends Base {
 		for (let i = 0; i < this.dice.length; i++) {
 			occurences[this.dice[i].getDots() - 1]++;
 		}
-		
+
 		for (let i = this.dice.length; i >= 0; i--) {
 			if (occurences[i] >= 3) {
 				threes = i + 1;
