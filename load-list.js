@@ -33,6 +33,9 @@ window.load = `
     protocol.class.js
     game-board.class.js
 	end-result.class.js
+	end-result-list.class.js
+	player-end-result.class.js
+	player-end-result-list.class.js
 
   templates/
     die.html
@@ -43,6 +46,7 @@ window.load = `
     protocol.html
     game-board.html
 	end-result.html
+	player-end-result.html
 
   js/main.js
 

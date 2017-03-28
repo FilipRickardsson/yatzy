@@ -3,16 +3,13 @@ class EndResult extends Base {
 	constructor(propertyValues) {
 		super(propertyValues);
 
-		var playerResultList = new PlayerResultList();
-		playerResultList.readPlayerResult(() => {
-			playerResultList.display('#playerResult')
+		var endResultList = new EndResultList();
+		endResultList.readPlayerResult(() => {
+			endResultList.display('#endPlayer')
 		});
 
 
-		var gamesResultList = new GamesResultList();
-		gamesResultList.readGamesResult(() => {
-			gamesResultList.display('#gamesResult')
-		});
+		
 
 
 
