@@ -28,6 +28,8 @@ window.load = `
     statistics.class.js
     player-result.class.js
     player-result-list.class.js
+    games-result.class.js
+    games-result-list.class.js
     protocol.class.js
     game-board.class.js
     column.class.js
@@ -37,6 +39,7 @@ window.load = `
     lobby.html
     statistics.html
     player-result.html
+    games-result.html
     protocol.html
     game-board.html
     column.html

@@ -27,7 +27,7 @@ class Lobby extends Base {
 				players.push($(this).val());
 			});
 
-//			console.log(players);
+			//			console.log(players);
 
 			$('body').empty();
 			var gameBoard = new GameBoard({
