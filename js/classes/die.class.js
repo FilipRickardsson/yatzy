@@ -8,7 +8,7 @@ class Die extends Base {
     }
 
     rollTheDice() {
-        $('.hidden').css('visibility', 'visible').hide().fadeIn().removeClass('hidden');
+        $('.hidden').removeClass('hidden');
         if (this.enabled) {
             this.dots = Math.floor(Math.random() * 6 + 1);
             $('#die' + this.id).html(this.dieFaces[this.dots - 1]);
