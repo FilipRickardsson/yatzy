@@ -22,12 +22,12 @@ class GameBoard extends Base {
         this.calcPotentialPoints();
     }
 
-	createProtocol() {
-		var protocol = new Protocol();
-		protocol.display('#protocolContainer');
-		console.log('GameBoard:', this.players);
-		protocol.createColumn(this.players);
-	}
+    createProtocol() {
+        var protocol = new Protocol();
+        protocol.display('#protocolContainer');
+        console.log('GameBoard:', this.players);
+        protocol.createColumn(this.players);
+    }
 
     calcPotentialPoints() {
         var points = [];
@@ -114,18 +114,18 @@ class GameBoard extends Base {
         return 0;
     }
 
-	checkFullHouse() {
-		var occurences = [0, 0, 0, 0, 0, 0];
-		var threes, pair;
-		for (let i = 0; i < this.dice.length; i++) {
-			occurences[this.dice[i].getDots() - 1]++;
-		}
+    checkFullHouse() {
+        var occurences = [0, 0, 0, 0, 0, 0];
+        var threes, pair;
+        for (let i = 0; i < this.dice.length; i++) {
+            occurences[this.dice[i].getDots() - 1]++;
+        }
 
-		for (let i = this.dice.length; i >= 0; i--) {
-			if (occurences[i] >= 3) {
-				threes = i + 1;
-			}
-		}
+        for (let i = this.dice.length; i >= 0; i--) {
+            if (occurences[i] >= 3) {
+                threes = i + 1;
+            }
+        }
 
         for (let i = this.dice.length; i >= 0; i--) {
             if (occurences[i] >= 3) {
