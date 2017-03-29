@@ -21,10 +21,21 @@ class Lobby extends Base {
 		var temp = this.checkInputFields();
 		console.log(temp);
 		if (temp) {
+			var players = [];
+
+			$("input").each(function () {
+				players.push($(this).val());
+			});
+
+//			console.log(players);
+
 			$('body').empty();
-			var gameBoard = new GameBoard();
+			var gameBoard = new GameBoard({
+				players: players
+			});
 			gameBoard.display('body');
 			gameBoard.createDice();
+			gameBoard.createProtocol();
 		} else {
 			$('.error').removeClass('hidden');
 		}
