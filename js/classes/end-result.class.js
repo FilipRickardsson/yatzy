@@ -8,7 +8,7 @@ class EndResult extends Base {
 
 	showResult(endArr) {
 		for (let i = 0; i < endArr.length; i += 2) {
-			$('#result').append('<p>Player: ' + endArr[i] + ' Points: ' + endArr[i + 1] +
+			$('#result').append('<p>Player: ' + endArr[i] + '  -> Points: ' + endArr[i + 1] +
 				'</p>');
 		}
 	}

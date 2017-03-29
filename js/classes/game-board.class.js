@@ -16,17 +16,18 @@ class GameBoard extends Base {
 	}
 
 	rollTheDice() {
-		var arr = ["Tom", 23, "Kime", 24, "Po", 3245];
+		for (let i = 0; i < this.dice.length; i++) {
+			this.dice[i].rollTheDice();
+		}
+		this.calcPotentialPoints();
+	}
+
+	endGame() {
+	var EndArr = ["Tom", 23, "Kime", 24, "Po", 3245];
 		var endResult = new EndResult();
 		$('body').empty();
 		endResult.display('body');
-		endResult.showResult(arr);
-
-		/*
-        for (let i = 0; i < this.dice.length; i++) {
-            this.dice[i].rollTheDice();
-        }
-        this.calcPotentialPoints();*/
+		endResult.showResult(EndArr);
 	}
 
 	createProtocol() {
@@ -66,7 +67,7 @@ class GameBoard extends Base {
 		}
 		return firstHalfPoints;
 	}
-
+//kollar hur många tärningen som har ett visst värde
 	checkOccurences(nbrOfOccurences) {
 		var points = 0;
 		var occurences = 0;
@@ -195,6 +196,14 @@ class GameBoard extends Base {
 		})
 	}
 
+scoreEndGames(userName , point){
+	var endArr =[];
+	endArr.push(userName);
+	endArr.push(point);
+	console.log(endArr);
+	
+}
+
 	gamesHasPlayers(games_id, players_id) {
 		this.db.gamesHasPlayers({
 			games_id: games_id,
@@ -204,8 +213,8 @@ class GameBoard extends Base {
 	static get sqlQueries() {
 		return {
 			scorePlayers: ` 
-     INSERT players SET ? 
-     `,
+			INSERT players SET ? 
+			`,
 			scoreGames: `INSERT games SET ?`,
 
 			gamesHasPlayers: `INSERT games_has_players SET ?`
