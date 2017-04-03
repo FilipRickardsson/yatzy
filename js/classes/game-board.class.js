@@ -1,7 +1,7 @@
 class GameBoard extends Base {
-
     constructor(propertyValues) {
         super(propertyValues);
+        this.turns=0; //A global variable to calculate the number of tens and check if they are three
     }
 
     createDice() {
@@ -14,12 +14,21 @@ class GameBoard extends Base {
             this.dice.push(die);
         }
     }
-
+ 
     rollTheDice() {
+        if(this.turns!=3){
         for (let i = 0; i < this.dice.length; i++) {
             this.dice[i].rollTheDice();
         }
         this.calcPotentialPoints();
+        this.turns++;
+        }
+        else{
+        console.log('You reached max number of turns!!'); //just for testing
+        document.getElementById("btn").disabled = true; //disable the button when the user reaches 3 turns
+        $('body').append('<div style="color: red">You reached max number of turns!!<div>'); 
+
+        }
     }
 
 	createProtocol() {
