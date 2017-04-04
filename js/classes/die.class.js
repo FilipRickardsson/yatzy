@@ -9,6 +9,7 @@ class Die extends Base {
 	}
 
 	rollTheDice() {
+		$('#errorMessage').remove(); //to delete the error message if the user rolls the dice so it is not shown anymore
 		if (this.enabled) {
 			this.dots = Math.floor(Math.random() * 6 + 1);
 			$('#die' + this.id).html(this.dieFaces[this.dots - 1]);
@@ -23,9 +24,10 @@ class Die extends Base {
 	toggleDie() {
 		if (this.counter===0) {
 		console.log('You have to roll at least once!!');
-		 $('body').append('<div style="color: red">You have to roll the dice at least once!!<div>'); 
+		 $('body').append('<div id="errorMessage" style="color: red">You have to roll the dice at least once!!<div>'); 
 		}
 		else{
+
 		this.enabled = !this.enabled;
 		$('.die' + this.id).toggleClass("dieDisabled");
 		}
