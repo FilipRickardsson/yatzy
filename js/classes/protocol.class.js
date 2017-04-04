@@ -26,30 +26,33 @@ class Protocol extends Base {
 
 		let i = 0;
 		$('.' + tempPlayers[currentPlayer]).each(function () {
-			if (i < points.length) {
-				$(this).empty();
-				var potentialPoint = new PotentialPoint({
-					id: $(this).attr("class").split(' ')[1],
-					points: points[i]
+				console.log('debug 1', $(this).html());
+				console.log('debug 2', $(this + ':contains("<a")');
+					if ($(this + ':contains("<a")') {
+							console.log('tjo');
+							$(this).empty();
+							var potentialPoint = new PotentialPoint({
+								id: $(this).attr("class").split(' ')[1],
+								points: points[i]
+							});
+							potentialPoint.protocol = protocol;
+							potentialPoint.display(this);
+							i++;
+						}
+					});
+			}
+
+			selectPoint(point) {
+				let tempPlayers = this.players;
+				let currentPlayer = this.currentPlayer;
+				$('.' + tempPlayers[currentPlayer]).each(function () {
+					if (point.id === $(this).attr("class").split(' ')[1]) {
+						console.log(point.points);
+						$(this).empty();
+						$(this).append(point.points);
+					}
 				});
-				potentialPoint.protocol = protocol;
-				potentialPoint.display(this);
-				//$(this).append('<a href="#" data-click="selectPoints">' + points[i] + '</a>');
-				i++;
 			}
-		});
-	}
 
-	selectPoint(point) {
-		let tempPlayers = this.players;
-		let currentPlayer = this.currentPlayer;
-		$('.' + tempPlayers[currentPlayer]).each(function () {
-//			console.log(point.id);
-//			console.log($(this).attr("class").split(' ')[1]);
-			if(point.id === $(this).attr("class").split(' ')[1]) {
-				console.log(point.points);
-			}
-		});
+		}
 	}
-
-}

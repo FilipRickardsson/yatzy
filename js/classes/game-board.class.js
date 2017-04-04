@@ -181,7 +181,6 @@ class GameBoard extends Base {
 	}
 
 	switchPlayer() {
-		console.log(this.currentPlayer);
 		if(this.currentPlayer + 1 === this.players.length) {
 			this.currentPlayer = 0;
 		} else {
