@@ -50,6 +50,7 @@ class Protocol extends Base {
                 console.log(point.points);
                 $(this).empty();
                 $(this).append(point.points);
+                $(this).addClass('success');
             }
         });
     }
