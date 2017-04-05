@@ -52,6 +52,7 @@ class Protocol extends Base {
 				$(this).attr('locked', 'true');
 			}
 		});
+		this.gameboard.switchPlayer();
 	}
 
 }

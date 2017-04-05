@@ -9,6 +9,14 @@
 	line-height: 0.6;
 }
 
+.die a,
+a:visited,
+a:hover,
+a:active {
+	text-decoration: none;
+	color: black;
+}
+
 /*
 a,
 a:visited,

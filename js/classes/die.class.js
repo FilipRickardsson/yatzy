@@ -27,7 +27,6 @@ class Die extends Base {
             $('#errorMessage').remove();
             $('body').append('<div id="errorMessage" style="color: red">You have to roll the dice at least once!!<div>');
         } else {
-
             this.enabled = !this.enabled;
             $('.die' + this.id).toggleClass("dieDisabled");
         }

@@ -19,23 +19,23 @@ class GameBoard extends Base {
 	}
 
 	rollTheDice() {
-		if (this.turns != 3) {
-			for (let i = 0; i < this.dice.length; i++) {
-				this.dice[i].rollTheDice();
-			}
-			var points = this.calcPotentialPoints();
-			this.protocol.insertPotentialPoints(points, this.currentPlayer);
-			this.switchPlayer();
-			this.turns++;
-		} else {
-			console.log('You reached max number of turns!!'); //just for testing
+
+		for (let i = 0; i < this.dice.length; i++) {
+			this.dice[i].rollTheDice();
+		}
+		var points = this.calcPotentialPoints();
+		this.protocol.insertPotentialPoints(points, this.currentPlayer);
+		this.turns++;
+		
+		if (this.turns === 3) {
 			$('.btn').prop('disabled', true);
 		}
 	}
 
 	createProtocol() {
 		var protocol = new Protocol({
-			players: this.players
+			players: this.players,
+			gameboard: this
 		});
 		this.protocol = protocol;
 		protocol.display('#protocolContainer');
@@ -189,6 +189,8 @@ class GameBoard extends Base {
 
 	switchPlayer() {
 		this.turns = 0;
+		$('.btn').prop('disabled', false);
+		
 		if (this.currentPlayer + 1 === this.players.length) {
 			this.currentPlayer = 0;
 		} else {
