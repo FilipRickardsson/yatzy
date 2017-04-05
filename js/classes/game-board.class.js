@@ -2,6 +2,8 @@ class GameBoard extends Base {
 
 	constructor(propertyValues) {
 		super(propertyValues);
+
+		this.currentPlayer = 0;
 		this.turns = 0; //A global variable to calculate the number of tens and check if they are three
 	}
 
@@ -186,6 +188,7 @@ class GameBoard extends Base {
 	}
 
 	switchPlayer() {
+		this.turns = 0;
 		if (this.currentPlayer + 1 === this.players.length) {
 			this.currentPlayer = 0;
 		} else {
