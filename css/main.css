@@ -1,43 +1,43 @@
 .die {
-    color: black;
-    display: inline-block;
+	color: black;
+	display: inline-block;
 }
 
 .die a {
-    font-size: 150px;
-    text-decoration: none;
-    line-height: 0.6;
+	font-size: 150px;
+	text-decoration: none;
+	line-height: 0.6;
 }
 
 a,
 a:visited,
 a:hover,
 a:active {
-    color: inherit;
-    text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 .dieDisabled a {
-    color: red;
+	color: red;
 }
 
 .error {
-    color: red;
+	color: red;
 }
 
 h2 {
-    text-align: center;
+	text-align: center;
 }
 
 .table table-bordered td,
 tr {
-    padding: 0px;
+	padding: 0px;
 }
 
 #dice {
-    background-color: lightgreen;
+	background-color: lightgreen;
 }
 
 #protocol {
-    background-color: #EEEEEE;
+	background-color: #EEEEEE;
 }

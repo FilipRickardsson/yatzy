@@ -1,13 +1,12 @@
 Lobby.addTemplate('default', function(){ return `
 <div class="container">
-<div id="dropdown" class="col-lg-6">
-    <h1>Welcome to yatzy game</h1>
-    <h1>Choose number of players</h1>
+	<div id="dropdown" class="col-lg-6">
+		<h1>Welcome to yatzy game</h1>
+		<h1>Choose number of players</h1>
 
-    <!-- Dropdown -->
-    
-        <label for="selectPlayer">Number of players</label>
-        <select id="selectPlayer" data-change="groupSize" name="selectPlayer">
+		<!-- Dropdown -->
+		<label for="selectPlayer">Number of players</label>
+		<select id="selectPlayer" data-change="groupSize" name="selectPlayer">
 			<option selected="selected" value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -19,26 +18,28 @@ Lobby.addTemplate('default', function(){ return `
 			<option value="9">9</option>
 			<option value="10">10</option>
 		</select>
-   
-    <!-- Dropdown -->
-    <div class="inputFields">
 
-    </div>
+		<!-- Dropdown -->
+		<div class="inputFields">
 
-    <p class="hidden error">Please enter every player\'s name</p>
-    <p></p>
-    <!-- Large button group -->
-    <div class="btn-group">
-        <button class="btn btn-default btn-lg" type="button" data-click="showStatistics">Statistics</button>
-    </div>
+		</div>
 
-    <!-- Large button group -->
-    <div class="btn-group">
-        <button class="btn btn-default btn-lg" type="button" data-click="startGame">Start Game</button>
-    </div>
-     </div>
-     <div class="col-lg-3"><h2>How to play?</h2><p>Yatzy can be played solitaire or by any number of players. Players take turns rolling five dice. After each roll, the player chooses which dice to keep, and which to reroll. A player may reroll some or all of the dice up to two times on a turn. The player must put a score or zero into a score box each turn. The game ends when all score boxes are used. The player with the highest total score wins the game.</p></div>
-<div class="col-lg-3"><img src="C:/Users/Delt604/Documents/Projects/yatzy/Images/yatzy-online.jpe"></div>
+		<p class="hidden error">Please enter every player\'s name</p>
+		<p></p>
+		<!-- Large button group -->
+		<div class="btn-group">
+			<button class="btn btn-default btn-lg" type="button" data-click="showStatistics">Statistics</button>
+		</div>
+
+		<!-- Large button group -->
+		<div class="btn-group">
+			<button class="btn btn-default btn-lg" type="button" data-click="startGame">Start Game</button>
+		</div>
+	</div>
+	<div class="col-lg-3">
+		<h2>How to play?</h2>
+		<p>Yatzy can be played solitaire or by any number of players. Players take turns rolling five dice. After each roll, the player chooses which dice to keep, and which to reroll. A player may reroll some or all of the dice up to two times on a turn. The player must put a score or zero into a score box each turn. The game ends when all score boxes are used. The player with the highest total score wins the game.</p>
+	</div>
 </div>
 
 `})
