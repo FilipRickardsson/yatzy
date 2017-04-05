@@ -33,6 +33,7 @@ window.load = `
     protocol.class.js
     game-board.class.js
     column.class.js
+	 potential-point.class.js
 
   templates/
     die.html
@@ -43,6 +44,7 @@ window.load = `
     protocol.html
     game-board.html
     column.html
+	 potential-point.html
 
   js/main.js
 

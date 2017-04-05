@@ -1,4 +1,5 @@
 class GameBoard extends Base {
+
 	constructor(propertyValues) {
 		super(propertyValues);
 		this.turns = 0; //A global variable to calculate the number of tens and check if they are three
@@ -20,7 +21,9 @@ class GameBoard extends Base {
 			for (let i = 0; i < this.dice.length; i++) {
 				this.dice[i].rollTheDice();
 			}
-			this.calcPotentialPoints();
+			var points = this.calcPotentialPoints();
+			this.protocol.insertPotentialPoints(points, this.currentPlayer);
+			this.switchPlayer();
 			this.turns++;
 		} else {
 			console.log('You reached max number of turns!!'); //just for testing
@@ -29,10 +32,12 @@ class GameBoard extends Base {
 	}
 
 	createProtocol() {
-		var protocol = new Protocol();
+		var protocol = new Protocol({
+			players: this.players
+		});
+		this.protocol = protocol;
 		protocol.display('#protocolContainer');
-		console.log('GameBoard:', this.players);
-		protocol.createColumn(this.players);
+		protocol.createColumn();
 	}
 
 	calcPotentialPoints() {
@@ -48,7 +53,12 @@ class GameBoard extends Base {
 		points.push(this.calcChance());
 		points.push(this.checkYatzy());
 
+		points.splice(6, 0, "Not implemented");
+		points.splice(7, 0, "Not implemented");
+		points.push("Not implemented");
+
 		console.log('Points: ', points);
+		return points;
 	}
 
 	calcFirstHalf() {
@@ -175,6 +185,14 @@ class GameBoard extends Base {
 		return points;
 	}
 
+	switchPlayer() {
+		if (this.currentPlayer + 1 === this.players.length) {
+			this.currentPlayer = 0;
+		} else {
+			this.currentPlayer++;
+		}
+	}
+
 	scorePlayers(id, userName, points) {
 		var testArr = [1, 1337, 250];
 		this.db.scorePlayers({
@@ -188,7 +206,6 @@ class GameBoard extends Base {
 
 	scoreGames(id, date) {
 		this.db.scoreGames({
-
 			id: id,
 			date: date
 		})
@@ -200,14 +217,17 @@ class GameBoard extends Base {
 			players_id: players_id
 		})
 	}
+
 	static get sqlQueries() {
 		return {
-			scorePlayers: ` 
-     INSERT players SET ? 
-     `,
-			scoreGames: `INSERT games SET ?`,
+			scorePlayers: `
+				INSERT players SET ?
+				`,
+			scoreGames: `
+				INSERT games SET ? `,
 
-			gamesHasPlayers: `INSERT games_has_players SET ?`
+			gamesHasPlayers: `
+				INSERT games_has_players SET ? `
 		}
 	}
 
