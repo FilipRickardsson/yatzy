@@ -2,7 +2,6 @@ class GameBoard extends Base {
 
 	constructor(propertyValues) {
 		super(propertyValues);
-
 		this.currentPlayer = 0;
 		this.turns = 0; //A global variable to calculate the number of tens and check if they are three
 	}
@@ -19,14 +18,13 @@ class GameBoard extends Base {
 	}
 
 	rollTheDice() {
-
 		for (let i = 0; i < this.dice.length; i++) {
 			this.dice[i].rollTheDice();
 		}
 		var points = this.calcPotentialPoints();
 		this.protocol.insertPotentialPoints(points, this.currentPlayer);
 		this.turns++;
-		
+
 		if (this.turns === 3) {
 			$('.btn').prop('disabled', true);
 		}
@@ -190,7 +188,7 @@ class GameBoard extends Base {
 	switchPlayer() {
 		this.turns = 0;
 		$('.btn').prop('disabled', false);
-		
+
 		if (this.currentPlayer + 1 === this.players.length) {
 			this.currentPlayer = 0;
 		} else {
@@ -214,6 +212,13 @@ class GameBoard extends Base {
 			id: id,
 			date: date
 		})
+	}
+
+	scoreEndGames(userName, point) {
+		var endArr = [];
+		endArr.push(userName);
+		endArr.push(point);
+		console.log(endArr);
 	}
 
 	gamesHasPlayers(games_id, players_id) {
