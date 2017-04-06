@@ -117,3 +117,7 @@ tr {
 	color: green;
 	text-decoration: none;
 }
+
+td {
+	width: 50px;
+}

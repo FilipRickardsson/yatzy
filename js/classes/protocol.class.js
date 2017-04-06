@@ -8,7 +8,7 @@
 			var tempPlayers = this.players;
 			for (let i = 0; i < this.players.length; i++) {
 				$('table').find('thead').each(function () {
-					$(this).find('th').last().after('<th>' + tempPlayers[i] + '</th>');
+					$(this).find('th').last().after('<th class="bold">' + tempPlayers[i] + '</th>');
 				});
 
 				let j = 0;
