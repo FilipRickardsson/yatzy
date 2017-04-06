@@ -55,7 +55,7 @@
 		points.push(this.calcChance());
 		points.push(this.checkYatzy());
 
-		points.splice(6, 0, "Not implemented");
+		points.splice(6, 0, 0);
 		points.splice(7, 0, "Not implemented");
 		points.push("Not implemented");
 

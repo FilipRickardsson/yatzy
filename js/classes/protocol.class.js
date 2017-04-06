@@ -44,7 +44,6 @@ class Protocol extends Base {
 	selectPoint(point) {
 		let tempPlayers = this.players;
 		let currentPlayer = this.currentPlayer;
-	
 		$('.' + tempPlayers[currentPlayer]).each(function () {
 			if (point.id === $(this).attr("class").split(' ')[1]) {
 				console.log(point.points);
@@ -53,21 +52,13 @@ class Protocol extends Base {
 				$(this).addClass('success');
 
 				$(this).attr('locked', 'true');
-
 			}
 		});
 		this.gameboard.switchPlayer();
-		//this.sumPoint(point.points);
-	this.sumPoint(point.points);
-		//	this.sumPoint(point.points);
-		
-		 //console.log('player name: ' + tempPlayers[currentPlayer]+  ' , choose number: ---> ' );
-		
-	
+		this.sumPoint(point.points);	
 	}
 
 	sumPoint(point){
-
 		let tempPlayers = this.players;
 		let currentPlayer = this.currentPlayer;
 		let currentPlayerName= tempPlayers[currentPlayer];
@@ -75,10 +66,6 @@ class Protocol extends Base {
 			console.log('name:' + currentPlayerName)
 				this.sum =point+ this.sum;
 				console.log('SUM:   '+ this.sum);
-
- 	$('td.' +tempPlayers[currentPlayer]+ '.7').html(this.sum);
-		
-   
-	}
-	
+ 	$('td.' +tempPlayers[currentPlayer]+ '.7').html(this.sum);	
+	}	
 }
