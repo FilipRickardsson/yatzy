@@ -25,7 +25,6 @@ class Protocol extends Base {
 		this.currentPlayer = currentPlayer;
 
 		let i = 0;
-		console.log('debug 1', this.currentPlayer);
 		$('.' + tempPlayers[currentPlayer]).each(function () {
 			if ($(this).attr('locked') == 'false') {
 				$(this).empty();
