@@ -31,5 +31,11 @@ class Die extends Base {
 			$('.die' + this.id).toggleClass("dieDisabled");
 		}
 	}
+	
+	resetDie() {
+		this.counter = 0;
+		$('.die' + this.id).removeClass("dieDisabled");
+		this.enabled = true;
+	}
 
 }

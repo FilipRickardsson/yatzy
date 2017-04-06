@@ -34,8 +34,8 @@ class Protocol extends Base {
 				});
 				potentialPoint.protocol = protocol;
 				potentialPoint.display(this);
-				i++;
 			}
+			i++;
 		});
 	}
 
