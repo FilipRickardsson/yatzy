@@ -225,8 +225,6 @@ class GameBoard extends Base {
 		this.turns = 0;
 		$('.btn').prop('disabled', false);
 
-		console.log('debug 1', $('.' + this.players[this.currentPlayer] + '.8'));
-		
 		let pointsFirstHalf = this.summerizeFirstHalf();
 		$('.' + this.players[this.currentPlayer] + '.7').empty();
 		$('.' + this.players[this.currentPlayer] + '.7').append(pointsFirstHalf[0]);
