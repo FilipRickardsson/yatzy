@@ -20,10 +20,7 @@ class GamesResultList extends List {
 				JOIN games_has_players
 				ON games.id = games_id
 				JOIN players 
-				ON players_id = players.id
-
-				
-				
+				ON players_id = players.id				
       	`
 		}
 	}

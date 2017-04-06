@@ -188,6 +188,10 @@ class GameBoard extends Base {
 	switchPlayer() {
 		this.turns = 0;
 		$('.btn').prop('disabled', false);
+		
+		for(let i = 0; i < this.dice.length; i++) {
+			this.dice[i].resetDie();
+		}
 
 		if (this.currentPlayer + 1 === this.players.length) {
 			this.currentPlayer = 0;
