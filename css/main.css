@@ -58,6 +58,10 @@ a:link {
 	color: red;
 }
 
+.dieGrayed {
+	color: gray;
+}
+
 .error {
 	color: red;
 }
@@ -77,4 +81,39 @@ tr {
 
 #protocol {
 	background-color: #EEEEEE;
+}
+
+.bold {
+	font-weight: bold;
+	background-color: #EEEEEE;
+}
+
+.green {
+	font-weight: bold;
+	color: green;
+}
+
+.green a {
+	color: green;
+	text-decoration: none;
+}
+
+.green a:visited {
+	color: green;
+	text-decoration: none;
+}
+
+.green a:hover {
+	color: darkgreen;
+	text-decoration: none;
+}
+
+.green a:active {
+	color: darkgreen;
+	text-decoration: none;
+}
+
+.green a:link {
+	color: green;
+	text-decoration: none;
 }
