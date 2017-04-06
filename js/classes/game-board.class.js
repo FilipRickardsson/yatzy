@@ -14,6 +14,7 @@ class GameBoard extends Base {
 			});
 			die.display('#dice');
 			this.dice.push(die);
+			die.resetDie();
 		}
 	}
 
