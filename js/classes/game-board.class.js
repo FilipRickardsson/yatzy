@@ -54,9 +54,9 @@ class GameBoard extends Base {
 		points.push(this.checkYatzy());
 
 		let sumFirstHalf = this.summerizeFirstHalf();
-		points.splice(6, 0, sumFirstHalf[0]);
-		points.splice(7, 0, sumFirstHalf[1]);
-		points.push(this.summerizeColumn());
+		points.splice(6, 0, 0);
+		points.splice(7, 0, 0);
+		points.push(0);
 
 		console.log('Points: ', points);
 
@@ -200,11 +200,11 @@ class GameBoard extends Base {
 			}
 			i++;
 		});
-		
-		if(sum >= 63) {
+
+		if (sum >= 63) {
 			bonus = 50;
 		}
-		
+
 		return [sum, bonus];
 	}
 
@@ -224,6 +224,19 @@ class GameBoard extends Base {
 		this.turns = 0;
 		$('.btn').prop('disabled', false);
 
+		console.log('debug 1', $('.' + this.players[this.currentPlayer] + '.8'));
+		
+		let pointsFirstHalf = this.summerizeFirstHalf();
+		$('.' + this.players[this.currentPlayer] + '.7').empty();
+		$('.' + this.players[this.currentPlayer] + '.7').append(pointsFirstHalf[0]);
+		$('.' + this.players[this.currentPlayer] + '.8').empty();
+		$('.' + this.players[this.currentPlayer] + '.8').append(pointsFirstHalf[1]);
+		
+		$('.' + this.players[this.currentPlayer] + '.18').empty();
+		$('.' + this.players[this.currentPlayer] + '.18').append(this.summerizeColumn());
+		
+		
+
 		for (let i = 0; i < this.dice.length; i++) {
 			this.dice[i].resetDie();
 		}
@@ -233,6 +246,7 @@ class GameBoard extends Base {
 		} else {
 			this.currentPlayer++;
 		}
+
 	}
 
 	scorePlayers(id, userName, points) {

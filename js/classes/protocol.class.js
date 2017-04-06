@@ -6,12 +6,12 @@ class Protocol extends Base {
 
 	createColumn() {
 		var tempPlayers = this.players;
-		let j = 0;
 		for (let i = 0; i < this.players.length; i++) {
 			$('table').find('thead').each(function () {
 				$(this).find('th').last().after('<th>' + tempPlayers[i] + '</th>');
 			});
 
+			let j = 0;
 			$('table').find('tr').each(function () {
 				$(this).find('td').last().after('<td class="' + tempPlayers[i] + ' ' + j + '"  locked=false></td>');
 				j++;
@@ -23,10 +23,11 @@ class Protocol extends Base {
 		let tempPlayers = this.players;
 		let protocol = this;
 		this.currentPlayer = currentPlayer;
+		let gameboard = this.gameboard;
 
 		let i = 0;
 		$('.' + tempPlayers[currentPlayer]).each(function () {
-			if ($(this).attr('locked') == 'false') {
+			if ($(this).attr('locked') == 'false' && i !== 6 && i !== 17 && i !== 7) {
 				$(this).empty();
 				var potentialPoint = new PotentialPoint({
 					id: $(this).attr("class").split(' ')[1],
@@ -51,7 +52,21 @@ class Protocol extends Base {
 				$(this).attr('locked', 'true');
 			}
 		});
+		this.clearPotentialPoints();
 		this.gameboard.switchPlayer();
+	}
+
+	clearPotentialPoints() {
+		let tempPlayers = this.players;
+		let currentPlayer = this.currentPlayer;
+		let i = 0;
+
+		$('.' + tempPlayers[currentPlayer]).each(function () {
+			if ($(this).attr('locked') == 'false' && i !== 6 && i !== 17 && i !== 7) {
+				$(this).empty();
+			}
+			i++;
+		});
 	}
 
 }
