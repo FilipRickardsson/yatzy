@@ -1,4 +1,4 @@
-class GameBoard extends Base {
+ class GameBoard extends Base {
 
 	constructor(propertyValues) {
 		super(propertyValues);

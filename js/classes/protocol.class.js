@@ -2,8 +2,9 @@ class Protocol extends Base {
 
 	constructor(propertyValues) {
 		super(propertyValues);
+			this.sum = 0;
 	}
-
+    
 	createColumn() {
 		var tempPlayers = this.players;
 		let j = 0;
@@ -43,16 +44,41 @@ class Protocol extends Base {
 	selectPoint(point) {
 		let tempPlayers = this.players;
 		let currentPlayer = this.currentPlayer;
+	
 		$('.' + tempPlayers[currentPlayer]).each(function () {
 			if (point.id === $(this).attr("class").split(' ')[1]) {
 				console.log(point.points);
 				$(this).empty();
 				$(this).append(point.points);
 				$(this).addClass('success');
+
 				$(this).attr('locked', 'true');
+
 			}
 		});
 		this.gameboard.switchPlayer();
+		//this.sumPoint(point.points);
+	this.sumPoint(point.points);
+		//	this.sumPoint(point.points);
+		
+		 //console.log('player name: ' + tempPlayers[currentPlayer]+  ' , choose number: ---> ' );
+		
+	
 	}
 
+	sumPoint(point){
+
+		let tempPlayers = this.players;
+		let currentPlayer = this.currentPlayer;
+		let currentPlayerName= tempPlayers[currentPlayer];
+		$('td.' +tempPlayers[currentPlayer]+ '.7').empty;
+			console.log('name:' + currentPlayerName)
+				this.sum =point+ this.sum;
+				console.log('SUM:   '+ this.sum);
+
+ 	$('td.' +tempPlayers[currentPlayer]+ '.7').html(this.sum);
+		
+   
+	}
+	
 }
