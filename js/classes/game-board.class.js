@@ -53,11 +53,13 @@ class GameBoard extends Base {
 		points.push(this.calcChance());
 		points.push(this.checkYatzy());
 
-		points.splice(6, 0, "Not implemented");
-		points.splice(7, 0, "Not implemented");
-		points.push("Not implemented");
+		let sumFirstHalf = this.summerizeFirstHalf();
+		points.splice(6, 0, sumFirstHalf[0]);
+		points.splice(7, 0, sumFirstHalf[1]);
+		points.push(this.summerizeColumn());
 
 		console.log('Points: ', points);
+
 		return points;
 	}
 
@@ -185,11 +187,44 @@ class GameBoard extends Base {
 		return points;
 	}
 
+	summerizeFirstHalf() {
+		let sum = 0;
+		let bonus = 0;
+		let i = 0;
+		$('.' + this.players[this.currentPlayer]).each(function () {
+			if (i > 6) {
+				return false;
+			}
+			if ($(this).attr('locked') == 'true') {
+				sum += parseInt($(this).text());
+			}
+			i++;
+		});
+		
+		if(sum >= 63) {
+			bonus = 50;
+		}
+		
+		return [sum, bonus];
+	}
+
+	summerizeColumn() {
+		let sum = 0;
+		let i = 0;
+		$('.' + this.players[this.currentPlayer]).each(function () {
+			if (i !== 6 && i !== 17 && $(this).attr('locked') == 'true') {
+				sum += parseInt($(this).text());
+			}
+			i++;
+		});
+		return sum;
+	}
+
 	switchPlayer() {
 		this.turns = 0;
 		$('.btn').prop('disabled', false);
-		
-		for(let i = 0; i < this.dice.length; i++) {
+
+		for (let i = 0; i < this.dice.length; i++) {
 			this.dice[i].resetDie();
 		}
 
