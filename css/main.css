@@ -156,3 +156,9 @@ td {
         height: 20px !important;
     }
 }
+
+@media screen and (max-height 678px) and (max-width 376px) {
+    body {
+        height: 100vh;
+    }
+}
