@@ -286,6 +286,15 @@ class GameBoard extends Base {
 				console.log('debug 6', latestGameId, this.players[i], points[i]);
 				this.insertGamesHasPlayers(latestGameId, this.players[i], points[i])
 			}
+
+			let highestPointsPos = -1;
+			for (let i = 0; i < points.length; i++) {
+				if (points[i] > highestPointsPos) {
+					highestPointsPos = i;
+				}
+			}
+
+			this.incrementWins(this.players[highestPointsPos]);
 		});
 	}
 
@@ -310,16 +319,26 @@ class GameBoard extends Base {
 		}, callback);
 	}
 
+	incrementWins(player, callback) {
+		this.db.incrementWins([player], {
+		}, callback);
+	}
+
 	static get sqlQueries() {
 		return {
 			insertPlayer: `
-			INSERT players SET ?
+				INSERT players SET ?
 			`,
 			insertGame: `
-			INSERT games SET ? 
+				INSERT games SET ? 
 			`,
 			insertGamesHasPlayers: `
-			INSERT games_has_players SET ? 
+				INSERT games_has_players SET ? 
+			`,
+			incrementWins: `
+				UPDATE players 
+				SET nbrOfWins = nbrOfWins + 1 
+				WHERE userName = ?
 			`
 		}
 	}
