@@ -267,50 +267,53 @@
 			$('body').empty();
 			endResult.display('body');
 			endResult.showResult(this.players, points);
+
+			var dt = new Date();
+			this.insertGame(dt.getDay() + '-' + dt.getMonth() + '-' + dt.getFullYear() + ' ' + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds());
+
+			for (let i = 0; i < this.players.length; i++) {
+				this.insertPlayer(this.players[i]);
+			}
+
+			let latestGameList = new LatestGameList();
+
+			latestGameList.readLatestGame(() => {
+				console.log('debug 5', latestGameList[0]);
+			});
 		}
 
-		scorePlayers(id, userName, points) {
-			var testArr = [1, 1337, 250];
-			this.db.scorePlayers({
-
-				id: testArr[0],
-				userName: testArr[1],
-				points: testArr[2]
-
-			})
+		insertPlayer(userName, callback) {
+			this.db.insertPlayer({
+				userName: userName,
+				nbrOfWins: 0
+			}, callback);
 		}
 
-		scoreGames(id, date) {
-			this.db.scoreGames({
-				id: id,
+		insertGame(date, callback) {
+			this.db.insertGame({
 				date: date
-			})
+			}, callback);
 		}
 
-		scoreEndGames(userName, point) {
-			var endArr = [];
-			endArr.push(userName);
-			endArr.push(point);
-			console.log(endArr);
-		}
-
-		gamesHasPlayers(games_id, players_id) {
-			this.db.gamesHasPlayers({
-				games_id: games_id,
-				players_id: players_id
-			})
+		insertGamesHasPlayers(gameId, username, points, callback) {
+			this.db.insertGamesHasPlayers({
+				games_id: gameId,
+				players_id: username,
+				points: points
+			}, callback);
 		}
 
 		static get sqlQueries() {
 			return {
-				scorePlayers: `
+				insertPlayer: `
 				INSERT players SET ?
 				`,
-				scoreGames: `
-				INSERT games SET ? `,
-
-				gamesHasPlayers: `
-				INSERT games_has_players SET ? `
+				insertGame: `
+				INSERT games SET ? 
+				`,
+				insertGamesHasPlayers: `
+				INSERT games_has_players SET ? 
+				`
 			}
 		}
 

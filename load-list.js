@@ -35,6 +35,8 @@ window.load = `
     column.class.js
 	potential-point.class.js
 	end-result.class.js
+	latest-game.class.js
+	latest-game-list.class.js
 
   templates/
     die.html
