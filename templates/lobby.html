@@ -1,6 +1,6 @@
 Lobby.addTemplate('default', function(){ return `
 <div class="container">
-    <div id="dropdown" class="col-lg-6">
+    <div id="dropdown" class="selectPlayers">
         <h1>Welcome to yatzy game</h1>
         <h1>Choose number of players</h1>
 
@@ -25,7 +25,6 @@ Lobby.addTemplate('default', function(){ return `
         </div>
 
         <p class="hidden error">Please enter every player\'s name</p>
-        <p></p>
         <!-- Large button group -->
         <div class="btn-group">
             <button class="btn btn-default btn-lg" type="button" data-click="showStatistics">Statistics</button>
