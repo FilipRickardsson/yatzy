@@ -3,6 +3,9 @@
 		constructor(propertyValues) {
 			super(propertyValues);
 			this.currentPlayer = 0;
+			this.totalGameTurns = this.players.length * 15;
+			console.log('debug 3', this.totalGameTurns);
+			this.currentTurn = 0;
 			this.turns = 0; //A global variable to calculate the number of tens and check if they are three
 		}
 
@@ -58,8 +61,6 @@
 			points.splice(6, 0, 0);
 			points.splice(7, 0, 0);
 			points.push(0);
-
-			console.log('Points: ', points);
 
 			return points;
 		}
@@ -223,6 +224,7 @@
 
 		switchPlayer() {
 			this.turns = 0;
+
 			$('.btn').prop('disabled', false);
 
 			let pointsFirstHalf = this.summerizeFirstHalf();
@@ -234,18 +236,37 @@
 			$('.' + this.players[this.currentPlayer] + '.18').empty();
 			$('.' + this.players[this.currentPlayer] + '.18').append(this.summerizeColumn());
 
-
-
-			for (let i = 0; i < this.dice.length; i++) {
-				this.dice[i].resetDie();
-			}
-
-			if (this.currentPlayer + 1 === this.players.length) {
-				this.currentPlayer = 0;
+			this.currentTurn++;
+			console.log('debug 2 current turn', this.currentTurn);
+			if (this.currentTurn >= this.totalGameTurns) {
+				this.endGame();
 			} else {
-				this.currentPlayer++;
+
+				for (let i = 0; i < this.dice.length; i++) {
+					this.dice[i].resetDie();
+				}
+
+				if (this.currentPlayer + 1 === this.players.length) {
+					this.currentPlayer = 0;
+				} else {
+					this.currentPlayer++;
+				}
 			}
 
+		}
+
+		endGame() {
+			let points = [];
+			for (let i = 0; i < this.players.length; i++) {
+				points.push(parseInt($('.' + this.players[i] + '.18').text()));
+			}
+			console.log('debug 1', points);
+			console.log('debug 4', this.players);
+
+			let endResult = new EndResult();
+			$('body').empty();
+			endResult.display('body');
+			endResult.showResult(this.players, points);
 		}
 
 		scorePlayers(id, userName, points) {

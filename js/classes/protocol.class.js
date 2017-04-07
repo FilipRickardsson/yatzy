@@ -16,7 +16,6 @@
 					if (j !== 7 && j !== 8 && j !== 18) {
 						$(this).find('td').last().after('<td class="' + tempPlayers[i] + ' ' + j + ' green"  locked=false></td>');
 					} else {
-						console.log('debug 1');
 						$(this).find('td').last().after('<td class="' + tempPlayers[i] + ' ' + j + ' bold"  locked=false>0</td>');
 					}
 					j++;
