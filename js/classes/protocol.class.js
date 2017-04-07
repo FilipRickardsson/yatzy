@@ -43,6 +43,7 @@
 				}
 				i++;
 			});
+			this.gameboard.showTimer();
 		}
 
 		selectPoint(point) {
@@ -59,7 +60,11 @@
 			});
 			this.clearPotentialPoints();
 			this.gameboard.switchPlayer();
+		
+				
+				
 		}
+		
 
 		clearPotentialPoints() {
 			let tempPlayers = this.players;

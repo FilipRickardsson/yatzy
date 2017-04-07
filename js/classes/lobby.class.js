@@ -36,6 +36,7 @@ class Lobby extends Base {
 			gameBoard.display('body');
 			gameBoard.createDice();
 			gameBoard.createProtocol();
+			gameBoard.timeGame;
 		} else {
 			$('.error').removeClass('hidden');
 		}

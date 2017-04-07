@@ -35,6 +35,7 @@ window.load = `
     column.class.js
 	potential-point.class.js
 	end-result.class.js
+  
 
   templates/
     die.html
@@ -47,6 +48,7 @@ window.load = `
     column.html
 	potential-point.html
 	end-result.html
+ 
 
   js/main.js
 
