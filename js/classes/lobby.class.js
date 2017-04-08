@@ -9,16 +9,16 @@ class Lobby extends Base {
 		$(".inputFields").empty();
 		for (let i = 0; i < nbrOfPlayers; i++) {
 			$(".inputFields").append(`
-			     <div class="input-group">
-			         <input type="text" class="form-control" placeholder="Player: " aria-describedby="basic-addon1" >
+			     <div>
+			         <input type="text" class="form-control" placeholder="Player">
 			     </div>`);
 		}
 		$('.error').addClass('hidden');
 	}
 
 	startGame() {
-		var temp = this.checkInputFields();
-		if (temp) {
+		var validPlayerNames = this.checkInputFields();
+		if (validPlayerNames) {
 			var players = [];
 
 			$("input").each(function () {
@@ -45,10 +45,10 @@ class Lobby extends Base {
 
 	checkInputFields() {
 		var valid = true;
-		var letters = /^[A-Za-z]+$/;
+		var validCharacters = /^[A-Za-z]+$/;
 		$('input').each(function () {
 			let txt = $(this).val();
-			let onlyLetters = txt.match(letters);
+			let onlyLetters = txt.match(validCharacters);
 			if ($(this).val().length === 0 || $(this).val().length > 10 || onlyLetters === null) {
 				valid = false;
 			}
