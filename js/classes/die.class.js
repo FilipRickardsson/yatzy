@@ -8,7 +8,7 @@ class Die extends Base {
 		this.counter = 0;
 	}
 
-	rollTheDice() {
+	rollTheDie() {
 		$('.die' + this.id).removeClass("dieGrayed");
 		
 		$('#errorMessage').remove(); //to delete the error message if the user rolls the dice so it is not shown anymore

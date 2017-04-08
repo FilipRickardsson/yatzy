@@ -3,6 +3,10 @@ class Statistics extends Base {
 	constructor(propertyValues) {
 		super(propertyValues);
 
+		this.readStatistics();
+	}
+	
+	readStatistics() {
 		var playerWinsList = new PlayerWinsList();
 		playerWinsList.readPlayerWins(() => {
 			playerWinsList.display('#playerResult');
@@ -34,7 +38,6 @@ class Statistics extends Base {
 			});
 
 		});
-
 	}
 
 	backToLobby() {

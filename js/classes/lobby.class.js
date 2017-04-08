@@ -44,11 +44,23 @@ class Lobby extends Base {
 	}
 
 	checkInputFields() {
+		var players = [];
 		var valid = true;
 		var validCharacters = /^[A-Za-z]+$/;
 		$('input').each(function () {
 			let txt = $(this).val();
 			let onlyLetters = txt.match(validCharacters);
+			
+			for(let i = 0; i < players.length; i++) {
+				if(txt === players[i]) {
+					valid = false;
+				}
+			}
+			
+			if(valid) {
+				players.push(txt);
+			}
+			
 			if ($(this).val().length === 0 || $(this).val().length > 10 || onlyLetters === null) {
 				valid = false;
 			}
