@@ -32,7 +32,6 @@ window.load = `
     games-result-list.class.js
     protocol.class.js
     game-board.class.js
-    column.class.js
 	potential-point.class.js
 	end-result.class.js
 	latest-game.class.js
@@ -46,7 +45,6 @@ window.load = `
     games-result.html
     protocol.html
     game-board.html
-    column.html
 	potential-point.html
 	end-result.html
 
