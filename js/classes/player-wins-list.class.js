@@ -1,7 +1,7 @@
-class PlayerResultList extends List {
+class PlayerWinsList extends List {
 
 	constructor(items) {
-		super(PlayerResult, items);
+		super(PlayerWins, items);
 	}
 
 	/* Fetches the result by the current user */

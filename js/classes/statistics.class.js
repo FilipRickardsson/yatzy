@@ -3,9 +3,9 @@ class Statistics extends Base {
 	constructor(propertyValues) {
 		super(propertyValues);
 
-		var playerResultList = new PlayerResultList();
-		playerResultList.readPlayerResult(() => {
-			playerResultList.display('#playerResult');
+		var playerWinsList = new PlayerWinsList();
+		playerWinsList.readPlayerResult(() => {
+			playerWinsList.display('#playerResult');
 
 			var gamesResultList = new GamesResultList();
 			gamesResultList.readGamesResult(() => {
