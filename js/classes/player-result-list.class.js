@@ -15,13 +15,11 @@ class PlayerResultList extends List {
 	static get sqlQueries() {
 		return {
 			readPlayerResult: `
-				SELECT date, games_id, username, points
-				FROM games
-				JOIN games_has_players
-				ON games.id = games_id
-				JOIN players 
-				ON players_id = players.id
-      	`
+				SELECT *
+				FROM players
+				ORDER BY nbrOfWins DESC
+      		`
 		}
 	}
+	
 }

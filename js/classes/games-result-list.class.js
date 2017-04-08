@@ -15,13 +15,12 @@ class GamesResultList extends List {
 	static get sqlQueries() {
 		return {
 			readGamesResult: `
-				SELECT DATE_FORMAT(date, '%y-%m-%d') date , games_id , username 
+				SELECT id, date, players_userName, points 
 				FROM games
 				JOIN games_has_players
-				ON games.id = games_id
-				JOIN players 
-				ON players_id = players.id				
-      	`
+				ON id = games_id
+				ORDER BY points DESC
+      		`
 		}
 	}
 }
