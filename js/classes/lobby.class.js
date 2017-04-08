@@ -48,12 +48,15 @@ class Lobby extends Base {
 	}
 
 	checkInputFields() {
-		var filled = true;
+		var valid = true;
+		var letters = /^[A-Za-z]+$/;
 		$('input').each(function () {
-			if ($(this).val().length === 0) {
-				filled = false;
+			let txt = $(this).val();
+			let onlyLetters = txt.match(letters);
+			if ($(this).val().length === 0 || $(this).val().length > 10 || onlyLetters === null) {
+				valid = false;
 			}
 		});
-		return filled;
+		return valid;
 	}
 }

@@ -87,6 +87,10 @@ td a:hover {
 	width: 100%;
 }
 
+select {
+	width: 67px;
+}
+
 @media (max-width: 768px) {
 	.die {
 		display: inline-block;
