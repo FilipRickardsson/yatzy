@@ -5,8 +5,8 @@ class PlayerWinsList extends List {
 	}
 
 	/* Fetches the result by the current user */
-	readPlayerResult(callback) {
-		this.db.readPlayerResult((data) => {
+	readPlayerWins(callback) {
+		this.db.readPlayerWins((data) => {
 			this.push.apply(this, data);
 			callback();
 		});
@@ -14,7 +14,7 @@ class PlayerWinsList extends List {
 
 	static get sqlQueries() {
 		return {
-			readPlayerResult: `
+			readPlayerWins: `
 				SELECT *
 				FROM players
 				ORDER BY nbrOfWins DESC
