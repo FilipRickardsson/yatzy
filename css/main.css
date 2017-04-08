@@ -25,11 +25,11 @@
 	text-decoration: none;
 }
 
-.dieDisabled {
+.dieLocked {
 	color: red;
 }
 
-.dieGrayed {
+.dieDisabled {
 	color: #CCCCCC;
 }
 
