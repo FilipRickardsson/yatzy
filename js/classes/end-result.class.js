@@ -14,7 +14,7 @@ class EndResult extends Base {
 		$('body').empty();
 		var lobby = new Lobby();
 		lobby.display('body');
-		lobby.groupSize();
+		lobby.createInputFields();
 	}
 
 }

@@ -4,7 +4,7 @@ class Lobby extends Base {
 		super(propertyValues);
 	}
 
-	groupSize() {
+	createInputFields() {
 		var selectedChoice = $('#selectPlayer').find(":selected").text();
 		console.log('selectedChoice:', selectedChoice);
 		$(".inputFields").empty();
