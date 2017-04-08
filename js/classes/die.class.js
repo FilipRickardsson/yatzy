@@ -25,7 +25,6 @@ class Die extends Base {
 
 	toggleDie() {
 		if (this.counter === 0) {
-			console.log('You have to roll at least once!!');
 			$('#errorMessage').remove();
 		} else {
 			this.enabled = !this.enabled;

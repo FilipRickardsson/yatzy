@@ -5,10 +5,9 @@ class Lobby extends Base {
 	}
 
 	createInputFields() {
-		var selectedChoice = $('#selectPlayer').find(":selected").text();
-		console.log('selectedChoice:', selectedChoice);
+		var nbrOfPlayers = $('#selectPlayer').find(":selected").text();
 		$(".inputFields").empty();
-		for (let i = 0; i < selectedChoice; i++) {
+		for (let i = 0; i < nbrOfPlayers; i++) {
 			$(".inputFields").append(`
 			     <div class="input-group">
 			         <input type="text" class="form-control" placeholder="Player: " aria-describedby="basic-addon1" >
@@ -19,15 +18,12 @@ class Lobby extends Base {
 
 	startGame() {
 		var temp = this.checkInputFields();
-		console.log(temp);
 		if (temp) {
 			var players = [];
 
 			$("input").each(function () {
 				players.push($(this).val());
 			});
-
-			//			console.log(players);
 
 			$('body').empty();
 			var gameBoard = new GameBoard({

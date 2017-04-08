@@ -22,11 +22,9 @@ class Statistics extends Base {
 					}
 				}
 
-				console.log('unsorted: ', games);
 				games = games.sort(function (a, b) {
 					return b - a;
 				});
-				console.log('sorted: ', games);
 				for (let i = 0; i < games.length; i++) {
 					$('#gamesResult').append('<div id="game' + games[i] + '"><h3>Game ' + games[i] + '</h3></div>');
 				}

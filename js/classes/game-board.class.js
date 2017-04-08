@@ -4,7 +4,6 @@ class GameBoard extends Base {
 		super(propertyValues);
 		this.currentPlayer = 0;
 		this.totalGameTurns = this.players.length * 15;
-		console.log('debug 3', this.totalGameTurns);
 		this.currentTurn = 0;
 		this.turns = 0; //A global variable to calculate the number of tens and check if they are three
 	}
@@ -156,7 +155,6 @@ class GameBoard extends Base {
 		for (let i = this.dice.length; i >= 0; i--) {
 			if (threes && occurences[i] >= 2 && i != threes - 1) {
 				pair = i + 1;
-				console.log('Threes:', threes, 'Pair:	', pair);
 				return threes * 3 + pair * 2;
 			}
 		}
@@ -237,7 +235,6 @@ class GameBoard extends Base {
 		$('.' + this.players[this.currentPlayer] + '.18').append(this.summerizeColumn());
 
 		this.currentTurn++;
-		console.log('debug 2 current turn', this.currentTurn);
 		if (this.currentTurn >= this.totalGameTurns) {
 			this.endGame();
 		} else {
@@ -260,9 +257,7 @@ class GameBoard extends Base {
 		for (let i = 0; i < this.players.length; i++) {
 			points.push(parseInt($('.' + this.players[i] + '.18').text()));
 		}
-		console.log('debug 1', points);
-		console.log('debug 4', this.players);
-
+		
 		let endResult = new EndResult();
 		$('body').empty();
 		endResult.display('body');
@@ -273,17 +268,14 @@ class GameBoard extends Base {
 		this.insertGame(currentTimeAndDate);
 
 		for (let i = 0; i < this.players.length; i++) {
-			//console.log(this.players[i]);
 			this.insertPlayer(this.players[i]);
 		}
 
 		let latestGameList = new LatestGameList();
 		latestGameList.readLatestGame(() => {
 			let latestGameId = latestGameList[0].id;
-			console.log('debug 5', latestGameList[0]);
 
 			for (let i = 0; i < this.players.length; i++) {
-				console.log('debug 6', latestGameId, this.players[i], points[i]);
 				this.insertGamesHasPlayers(latestGameId, this.players[i], points[i])
 			}
 

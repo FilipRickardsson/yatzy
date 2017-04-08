@@ -49,7 +49,6 @@
 			let currentPlayer = this.currentPlayer;
 			$('.' + tempPlayers[currentPlayer]).each(function () {
 				if (point.id === $(this).attr("class").split(' ')[1]) {
-					console.log(point.points);
 					$(this).empty();
 					$(this).append(point.points);
 					$(this).addClass('success');
