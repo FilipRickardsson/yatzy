@@ -9,5 +9,12 @@ class EndResult extends Base {
 			$('#result').append('<p>Player: ' + players[i] + ' Points: ' + points[i] + '</p>');
 		}
 	}
-	
+
+	backToLobby() {
+		$('body').empty();
+		var lobby = new Lobby();
+		lobby.display('body');
+		lobby.groupSize();
+	}
+
 }

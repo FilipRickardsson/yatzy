@@ -14,7 +14,7 @@
 				let j = 0;
 				$('table').find('tr').each(function () {
 					if (j !== 7 && j !== 8 && j !== 18) {
-						$(this).find('td').last().after('<td class="' + tempPlayers[i] + ' ' + j + ' green"  locked=false></td>');
+						$(this).find('td').last().after('<td class="' + tempPlayers[i] + ' ' + j + ' green nopadding"  locked=false></td>');
 					} else {
 						$(this).find('td').last().after('<td class="' + tempPlayers[i] + ' ' + j + ' bold"  locked=false>0</td>');
 					}
@@ -53,6 +53,7 @@
 					$(this).empty();
 					$(this).append(point.points);
 					$(this).addClass('success');
+					$(this).removeClass('nopadding');
 					$(this).attr('locked', 'true');
 				}
 			});
