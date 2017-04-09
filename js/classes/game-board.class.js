@@ -277,14 +277,16 @@ class GameBoard extends Base {
 				this.insertGamesHasPlayers(latestGameId, this.players[i], points[i])
 			}
 
-			let highestPointsPos = -1;
-			for (let i = 0; i < points.length; i++) {
-				if (points[i] > highestPointsPos) {
-					highestPointsPos = i;
+			if (this.players.length > 1) {
+				let highestPointsPos = -1;
+				for (let i = 0; i < points.length; i++) {
+					if (points[i] > highestPointsPos) {
+						highestPointsPos = i;
+					}
 				}
-			}
 
-			this.incrementWins(this.players[highestPointsPos]);
+				this.incrementWins(this.players[highestPointsPos]);
+			}
 		});
 	}
 
