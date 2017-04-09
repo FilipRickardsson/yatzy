@@ -1,9 +1,15 @@
+html,
+body,
+.container {
+	background-color: #0f6381 !important;
+}
+
 .container {
 	margin: 20px 0 20px 0;
 }
 
 .die {
-	color: black;
+	color: #ebebeb;
 	display: block;
 	text-align: center;
 }
@@ -26,11 +32,11 @@
 }
 
 .dieLocked {
-	color: red;
+	color: #c7ae70;
 }
 
 .dieDisabled {
-	color: #CCCCCC;
+	color: #4caacb;
 }
 
 .error {
@@ -43,12 +49,11 @@
 
 .bold {
 	font-weight: bold;
-	background-color: #EEEEEE;
+	background-color: #CCCCCC;
 }
 
 .green {
 	font-weight: bold;
-	color: green;
 }
 
 .green a,
@@ -56,7 +61,7 @@
 .green a:hover,
 .green a:active,
 .green a:link {
-	color: green;
+	color: #1581a7;
 	text-decoration: none;
 }
 
@@ -74,7 +79,7 @@ td a {
 }
 
 td a:hover {
-	background-color: lightgreen;
+	background-color: #8cddf9;
 }
 
 .nopadding {
@@ -94,6 +99,37 @@ select {
 .form-control {
 	margin-bottom: 10px;
 	max-width: 200px;
+}
+
+h1,
+h2,
+h3,
+p,
+label {
+	color: #ebebeb !important;
+}
+
+.table {
+	background-color: #ebebeb;
+}
+
+.success {
+	background-color: #dbc691 !important;
+	/*		#66c3e4;*/
+}
+
+.table-bordered,
+table,
+th,
+td,
+tr,
+tbody,
+thead {
+	border-color: #AAAAAA !important;
+}
+
+.btn, input {
+	background-color: #ebebeb !important;
 }
 
 @media (max-width: 768px) {
