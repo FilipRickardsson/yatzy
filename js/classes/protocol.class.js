@@ -43,7 +43,9 @@
 				}
 				i++;
 			});
-			this.gameboard.showTimer();
+		//	this.gameboard.showTimer();
+			this.gameboard.printTime();
+				//this.gameboard.showPrintTime();
 		}
 
 		selectPoint(point) {

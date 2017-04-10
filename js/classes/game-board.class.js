@@ -269,8 +269,22 @@
 					}
 					setInterval (timer, 1000 );
 							}
+
+		printTime(){
+				var now = new Date();
+				var hours = now.getHours();
+				var mins = now.getMinutes();
+				var seconds = now.getSeconds();
+				console.log (hours + ":" + mins + ":" + seconds);
+				var printTimeNow = function timeNow (){
+		console.log (hours + ":" + mins + ":" + seconds);
+				}
+				
+					setInterval (this.printTimeNow , 1000 );
+			}
 		
 		
+	
 
 			scorePlayers(id, userName, points) {
 				var testArr = [1, 1337, 250];
@@ -282,6 +296,7 @@
 
 				})
 			}
+
 
 			scoreGames(id, date) {
 				this.db.scoreGames({
