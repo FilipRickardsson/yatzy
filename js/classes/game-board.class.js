@@ -4,7 +4,7 @@
 			super(propertyValues);
 			this.currentPlayer = 0;
 			this.turns = 0; //A global variable to calculate the number of tens and check if they are three
-		
+
 		}
 	   /*createTimeBox(){
 	             var timeGame = new TimeGame();
@@ -258,79 +258,82 @@
 				}
 
 		showTimer(){
-			//var startTime =new Date('H%mm%ss');
-					var startTime = '';
-					var timer = function countTime ( )
-					{
-   					 startTime += 1;
-					    $('#myTimer').text(startTime);
-					    console.log('Timer: ' + startTime);
+			var startTimer = '';
+			var timer = function countTime ( )
+			{
+				startTimer += 1;
+				$('#myTimer').text(startTimer);
+				console.log('Timer: ' + startTimer);
 
-					}
-					setInterval (timer, 1000 );
-							}
-
-		printTime(){
-				var now = new Date();
-				var hours = now.getHours();
-				var mins = now.getMinutes();
-				var seconds = now.getSeconds();
-				console.log (hours + ":" + mins + ":" + seconds);
-				var printTimeNow = function timeNow (){
-		console.log (hours + ":" + mins + ":" + seconds);
-				}
-				
-					setInterval (this.printTimeNow , 1000 );
 			}
-		
-		
-	
-
-			scorePlayers(id, userName, points) {
-				var testArr = [1, 1337, 250];
-				this.db.scorePlayers({
-
-					id: testArr[0],
-					userName: testArr[1],
-					points: testArr[2]
-
-				})
-			}
-
-
-			scoreGames(id, date) {
-				this.db.scoreGames({
-					id: id,
-					date: date
-				})
-			}
-
-			scoreEndGames(userName, point) {
-				var endArr = [];
-				endArr.push(userName);
-				endArr.push(point);
-				console.log(endArr);
-			}
-
-			gamesHasPlayers(games_id, players_id) {
-				this.db.gamesHasPlayers({
-					games_id: games_id,
-					players_id: players_id
-				})
-			}
-
-
-			static get sqlQueries() {
-				return {
-					scorePlayers: `
-					INSERT players SET ?
-					`,
-					scoreGames: `
-					INSERT games SET ? `,
-
-					gamesHasPlayers: `
-					INSERT games_has_players SET ? `
-				}
-			}
-
+			setInterval (timer, 1000 );
 		}
+
+		showTime(){
+		
+			var now = new Date();
+			var hours = now.getHours();
+			var mins = now.getMinutes();
+			var seconds = now.getSeconds();
+
+			var	nowTime = function (){
+			var x = hours + ":" + mins + ":" + seconds;
+			console.log (x);
+				$('#newTime').text(x);
+			}
+			setInterval (nowTime, 1000 );
+		}
+		clearShowTime(){
+			$('#newTime').each(function (){
+				$(this).empty();
+			})
+		}
+		
+		scorePlayers(id, userName, points) {
+			var testArr = [1, 1337, 250];
+			this.db.scorePlayers({
+
+				id: testArr[0],
+				userName: testArr[1],
+				points: testArr[2]
+
+			})
+		}
+
+
+		scoreGames(id, date) {
+			this.db.scoreGames({
+				id: id,
+				date: date
+			})
+		}
+
+		scoreEndGames(userName, point) {
+			var endArr = [];
+			endArr.push(userName);
+			endArr.push(point);
+			console.log(endArr);
+		}
+
+		gamesHasPlayers(games_id, players_id) {
+			this.db.gamesHasPlayers({
+				games_id: games_id,
+				players_id: players_id
+			})
+		}
+
+
+		static get sqlQueries() {
+			return {
+				scorePlayers: `
+				INSERT players SET ?
+				`,
+				scoreGames: `
+				INSERT games SET ? `,
+
+				gamesHasPlayers: `
+				INSERT games_has_players SET ? `
+			}
+		}
+
+	}

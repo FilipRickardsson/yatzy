@@ -42,10 +42,11 @@
 					potentialPoint.display(this);
 				}
 				i++;
+
 			});
-		//	this.gameboard.showTimer();
-			this.gameboard.printTime();
-				//this.gameboard.showPrintTime();
+		//this.gameboard.showTimer();
+			this.gameboard.showTime();
+
 		}
 
 		selectPoint(point) {
@@ -62,11 +63,10 @@
 			});
 			this.clearPotentialPoints();
 			this.gameboard.switchPlayer();
-		
-				
+			this.gameboard.clearShowTime();
 				
 		}
-		
+
 
 		clearPotentialPoints() {
 			let tempPlayers = this.players;
