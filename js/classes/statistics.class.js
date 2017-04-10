@@ -3,9 +3,13 @@ class Statistics extends Base {
 	constructor(propertyValues) {
 		super(propertyValues);
 
-		var playerResultList = new PlayerResultList();
-		playerResultList.readPlayerResult(() => {
-			playerResultList.display('#playerResult');
+		this.readStatistics();
+	}
+	
+	readStatistics() {
+		var playerWinsList = new PlayerWinsList();
+		playerWinsList.readPlayerWins(() => {
+			playerWinsList.display('#playerResult');
 
 			var gamesResultList = new GamesResultList();
 			gamesResultList.readGamesResult(() => {
@@ -22,11 +26,9 @@ class Statistics extends Base {
 					}
 				}
 
-				console.log('unsorted: ', games);
 				games = games.sort(function (a, b) {
 					return b - a;
 				});
-				console.log('sorted: ', games);
 				for (let i = 0; i < games.length; i++) {
 					$('#gamesResult').append('<div id="game' + games[i] + '"><h3>Game ' + games[i] + '</h3></div>');
 				}
@@ -36,14 +38,13 @@ class Statistics extends Base {
 			});
 
 		});
-
 	}
 
 	backToLobby() {
 		$('body').empty();
 		var lobby = new Lobby();
 		lobby.display('body');
-		lobby.groupSize();
+		lobby.createInputFields();
 	}
 
 }

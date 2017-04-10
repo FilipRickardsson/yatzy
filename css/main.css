@@ -1,9 +1,15 @@
+html,
+body,
+.container {
+	background-color: #0f6381 !important;
+}
+
 .container {
 	margin: 20px 0 20px 0;
 }
 
 .die {
-	color: black;
+	color: #ebebeb;
 	display: block;
 	text-align: center;
 }
@@ -25,12 +31,12 @@
 	text-decoration: none;
 }
 
-.dieDisabled {
-	color: red;
+.dieLocked {
+	color: #c7ae70;
 }
 
-.dieGrayed {
-	color: #CCCCCC;
+.dieDisabled {
+	color: #3794b5;
 }
 
 .error {
@@ -43,20 +49,19 @@
 
 .bold {
 	font-weight: bold;
-	background-color: #EEEEEE;
+	background-color: #CCCCCC;
 }
 
-.green {
+.blue {
 	font-weight: bold;
-	color: green;
 }
 
-.green a,
-.green a:visited,
-.green a:hover,
-.green a:active,
-.green a:link {
-	color: green;
+.blue a,
+.blue a:visited,
+.blue a:hover,
+.blue a:active,
+.blue a:link {
+	color: #1581a7;
 	text-decoration: none;
 }
 
@@ -74,7 +79,7 @@ td a {
 }
 
 td a:hover {
-	background-color: lightgreen;
+	background-color: #8cddf9;
 }
 
 .nopadding {
@@ -91,12 +96,43 @@ select {
 	width: 67px;
 }
 
+.form-control {
+	margin-bottom: 10px;
+	max-width: 200px;
+}
+
+h1,
+h2,
+h3,
+p,
+label {
+	color: #ebebeb !important;
+}
+
+.success {
+	background-color: #dbc691 !important;
+}
+
+.table-bordered,
+table,
+th,
+td,
+tr,
+tbody,
+thead {
+	border-color: #AAAAAA !important;
+}
+
+.btn, input, .table, select {
+	background-color: #ebebeb !important;
+}
+
 @media (max-width: 768px) {
 	.die {
 		display: inline-block;
 	}
 	.die a {
-		font-size: 86px;
+		font-size: 84px;
 		line-height: 0.6;
 	}
 }

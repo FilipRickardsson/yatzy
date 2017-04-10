@@ -1,12 +1,13 @@
 Lobby.addTemplate('default', function(){ return `
 <div class="container">
-	<div id="dropdown" class="col-lg-6">
+
+	<div id="dropdown" class="col-md-6">
 		<h1>Welcome to Yatzy!</h1>
 		<h3>Choose number of players:</h3>
 
 		<!-- Dropdown -->
 		<label for="selectPlayer">Number of players</label>
-		<select id="selectPlayer" data-change="groupSize" name="selectPlayer">
+		<select id="selectPlayer" data-change="createInputFields" name="selectPlayer">
 			<option selected="selected" value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -19,8 +20,7 @@ Lobby.addTemplate('default', function(){ return `
 
 		</div>
 
-		<p class="hidden error">Every player must have a name with max 10 character.<br>Only letters are allowed<br></p>
-		<p></p>
+		<p class="hidden error">Every player must have an unique name with max 10 character.<br>Only letters are allowed<br></p>
 		<!-- Large button group -->
 		<div class="btn-group">
 			<button class="btn btn-default btn-lg" type="button" data-click="showStatistics">Statistics</button>
@@ -31,10 +31,12 @@ Lobby.addTemplate('default', function(){ return `
 			<button class="btn btn-default btn-lg" type="button" data-click="startGame">Start Game</button>
 		</div>
 	</div>
-	<div class="col-lg-3">
+	
+	<div class="col-md-6">
 		<h2>How to play?</h2>
 		<p>Yatzy can be played solitaire or by any number of players. Players take turns rolling five dice. After each roll, the player chooses which dice to keep, and which to reroll. A player may reroll some or all of the dice up to two times on a turn. The player must put a score or zero into a score box each turn. The game ends when all score boxes are used. The player with the highest total score wins the game.</p>
 	</div>
+	
 </div>
 
 `})

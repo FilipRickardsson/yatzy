@@ -2,11 +2,11 @@ class GameBoard extends Base {
 
 	constructor(propertyValues) {
 		super(propertyValues);
+
 		this.currentPlayer = 0;
 		this.totalGameTurns = this.players.length * 15;
-		console.log('debug 3', this.totalGameTurns);
 		this.currentTurn = 0;
-		this.turns = 0; //A global variable to calculate the number of tens and check if they are three
+		this.diceThrow = 0;
 	}
 
 	createDice() {
@@ -23,13 +23,13 @@ class GameBoard extends Base {
 
 	rollTheDice() {
 		for (let i = 0; i < this.dice.length; i++) {
-			this.dice[i].rollTheDice();
+			this.dice[i].rollTheDie();
 		}
 		var points = this.calcPotentialPoints();
 		this.protocol.insertPotentialPoints(points, this.currentPlayer);
-		this.turns++;
+		this.diceThrow++;
 
-		if (this.turns === 3) {
+		if (this.diceThrow === 3) {
 			$('.btn').prop('disabled', true);
 		}
 	}
@@ -57,7 +57,6 @@ class GameBoard extends Base {
 		points.push(this.calcChance());
 		points.push(this.checkYatzy());
 
-		let sumFirstHalf = this.summerizeFirstHalf();
 		points.splice(6, 0, 0);
 		points.splice(7, 0, 0);
 		points.push(0);
@@ -156,7 +155,6 @@ class GameBoard extends Base {
 		for (let i = this.dice.length; i >= 0; i--) {
 			if (threes && occurences[i] >= 2 && i != threes - 1) {
 				pair = i + 1;
-				console.log('Threes:', threes, 'Pair:	', pair);
 				return threes * 3 + pair * 2;
 			}
 		}
@@ -210,11 +208,11 @@ class GameBoard extends Base {
 		return [sum, bonus];
 	}
 
-	summerizeColumn() {
+	summerizeWholeColumn() {
 		let sum = 0;
 		let i = 0;
 		$('.' + this.players[this.currentPlayer]).each(function () {
-			if (i !== 6 && i !== 17 && $(this).attr('locked') == 'true') {
+			if ($(this).attr('locked') == 'true' || i == 7) {
 				sum += parseInt($(this).text());
 			}
 			i++;
@@ -223,28 +221,19 @@ class GameBoard extends Base {
 	}
 
 	switchPlayer() {
-		this.turns = 0;
+		this.diceThrow = 0;
 
 		$('.btn').prop('disabled', false);
 
 		let pointsFirstHalf = this.summerizeFirstHalf();
-		$('.' + this.players[this.currentPlayer] + '.7').empty();
-		$('.' + this.players[this.currentPlayer] + '.7').append(pointsFirstHalf[0]);
-		$('.' + this.players[this.currentPlayer] + '.8').empty();
-		$('.' + this.players[this.currentPlayer] + '.8').append(pointsFirstHalf[1]);
-
-		$('.' + this.players[this.currentPlayer] + '.18').empty();
-		$('.' + this.players[this.currentPlayer] + '.18').append(this.summerizeColumn());
+		let totalSum = this.summerizeWholeColumn();
+		this.protocol.insertSumsAndBonus(pointsFirstHalf, totalSum);
 
 		this.currentTurn++;
-		console.log('debug 2 current turn', this.currentTurn);
 		if (this.currentTurn >= this.totalGameTurns) {
 			this.endGame();
 		} else {
-
-			for (let i = 0; i < this.dice.length; i++) {
-				this.dice[i].resetDie();
-			}
+			this.resetDice();
 
 			if (this.currentPlayer + 1 === this.players.length) {
 				this.currentPlayer = 0;
@@ -255,46 +244,49 @@ class GameBoard extends Base {
 
 	}
 
+	resetDice() {
+		for (let i = 0; i < this.dice.length; i++) {
+			this.dice[i].resetDie();
+		}
+	}
+
 	endGame() {
 		let points = [];
 		for (let i = 0; i < this.players.length; i++) {
 			points.push(parseInt($('.' + this.players[i] + '.18').text()));
 		}
-		console.log('debug 1', points);
-		console.log('debug 4', this.players);
 
 		let endResult = new EndResult();
 		$('body').empty();
 		endResult.display('body');
 		endResult.showResult(this.players, points);
 
-		var dt = new Date();
-		var currentTimeAndDate = dt.getDay() + '-' + dt.getMonth() + '-' + dt.getFullYear() + ' ' + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds()
+		var date = new Date();
+		var currentTimeAndDate = date.getDay() + '-' + date.getMonth() + '-' + date.getFullYear() + ' ' + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
 		this.insertGame(currentTimeAndDate);
 
 		for (let i = 0; i < this.players.length; i++) {
-			//console.log(this.players[i]);
 			this.insertPlayer(this.players[i]);
 		}
 
 		let latestGameList = new LatestGameList();
 		latestGameList.readLatestGame(() => {
 			let latestGameId = latestGameList[0].id;
-			console.log('debug 5', latestGameList[0]);
 
 			for (let i = 0; i < this.players.length; i++) {
-				console.log('debug 6', latestGameId, this.players[i], points[i]);
 				this.insertGamesHasPlayers(latestGameId, this.players[i], points[i])
 			}
 
-			let highestPointsPos = -1;
-			for (let i = 0; i < points.length; i++) {
-				if (points[i] > highestPointsPos) {
-					highestPointsPos = i;
+			if (this.players.length > 1) {
+				let highestPointsPos = -1;
+				for (let i = 0; i < points.length; i++) {
+					if (points[i] > highestPointsPos) {
+						highestPointsPos = i;
+					}
 				}
-			}
 
-			this.incrementWins(this.players[highestPointsPos]);
+				this.incrementWins(this.players[highestPointsPos]);
+			}
 		});
 	}
 
@@ -320,8 +312,7 @@ class GameBoard extends Base {
 	}
 
 	incrementWins(player, callback) {
-		this.db.incrementWins([player], {
-		}, callback);
+		this.db.incrementWins([player], {}, callback);
 	}
 
 	static get sqlQueries() {

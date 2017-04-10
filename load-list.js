@@ -26,13 +26,12 @@ window.load = `
     die.class.js   
     lobby.class.js
     statistics.class.js
-    player-result.class.js
-    player-result-list.class.js
+    player-wins.class.js
+    player-wins-list.class.js
     games-result.class.js
     games-result-list.class.js
     protocol.class.js
     game-board.class.js
-    column.class.js
 	potential-point.class.js
 	end-result.class.js
 	latest-game.class.js
@@ -42,11 +41,10 @@ window.load = `
     die.html
     lobby.html
     statistics.html
-    player-result.html
+    player-wins.html
     games-result.html
     protocol.html
     game-board.html
-    column.html
 	potential-point.html
 	end-result.html
 

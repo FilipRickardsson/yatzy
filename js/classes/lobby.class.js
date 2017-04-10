@@ -4,30 +4,26 @@ class Lobby extends Base {
 		super(propertyValues);
 	}
 
-	groupSize() {
-		var selectedChoice = $('#selectPlayer').find(":selected").text();
-		console.log('selectedChoice:', selectedChoice);
+	createInputFields() {
+		var nbrOfPlayers = $('#selectPlayer').find(":selected").text();
 		$(".inputFields").empty();
-		for (let i = 0; i < selectedChoice; i++) {
+		for (let i = 0; i < nbrOfPlayers; i++) {
 			$(".inputFields").append(`
-			     <div class="input-group">
-			         <input type="text" class="form-control" placeholder="Player: " aria-describedby="basic-addon1" >
+			     <div>
+			         <input type="text" class="form-control" placeholder="Player">
 			     </div>`);
 		}
 		$('.error').addClass('hidden');
 	}
 
 	startGame() {
-		var temp = this.checkInputFields();
-		console.log(temp);
-		if (temp) {
+		var validPlayerNames = this.checkInputFields();
+		if (validPlayerNames) {
 			var players = [];
 
 			$("input").each(function () {
 				players.push($(this).val());
 			});
-
-			//			console.log(players);
 
 			$('body').empty();
 			var gameBoard = new GameBoard({
@@ -48,11 +44,23 @@ class Lobby extends Base {
 	}
 
 	checkInputFields() {
+		var players = [];
 		var valid = true;
-		var letters = /^[A-Za-z]+$/;
+		var validCharacters = /^[A-Za-z]+$/;
 		$('input').each(function () {
 			let txt = $(this).val();
-			let onlyLetters = txt.match(letters);
+			let onlyLetters = txt.match(validCharacters);
+			
+			for(let i = 0; i < players.length; i++) {
+				if(txt === players[i]) {
+					valid = false;
+				}
+			}
+			
+			if(valid) {
+				players.push(txt);
+			}
+			
 			if ($(this).val().length === 0 || $(this).val().length > 10 || onlyLetters === null) {
 				valid = false;
 			}

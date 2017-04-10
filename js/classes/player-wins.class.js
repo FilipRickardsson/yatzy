@@ -1,4 +1,4 @@
-class PlayerResult extends Base {
+class PlayerWins extends Base {
 
 	constructor(propertyValues) {
 		super(propertyValues);

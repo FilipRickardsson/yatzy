@@ -1,12 +1,12 @@
-class PlayerResultList extends List {
+class PlayerWinsList extends List {
 
 	constructor(items) {
-		super(PlayerResult, items);
+		super(PlayerWins, items);
 	}
 
 	/* Fetches the result by the current user */
-	readPlayerResult(callback) {
-		this.db.readPlayerResult((data) => {
+	readPlayerWins(callback) {
+		this.db.readPlayerWins((data) => {
 			this.push.apply(this, data);
 			callback();
 		});
@@ -14,7 +14,7 @@ class PlayerResultList extends List {
 
 	static get sqlQueries() {
 		return {
-			readPlayerResult: `
+			readPlayerWins: `
 				SELECT *
 				FROM players
 				ORDER BY nbrOfWins DESC
