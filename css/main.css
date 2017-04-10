@@ -36,7 +36,7 @@ body,
 }
 
 .dieDisabled {
-	color: #4caacb;
+	color: #3794b5;
 }
 
 .error {
@@ -52,15 +52,15 @@ body,
 	background-color: #CCCCCC;
 }
 
-.green {
+.blue {
 	font-weight: bold;
 }
 
-.green a,
-.green a:visited,
-.green a:hover,
-.green a:active,
-.green a:link {
+.blue a,
+.blue a:visited,
+.blue a:hover,
+.blue a:active,
+.blue a:link {
 	color: #1581a7;
 	text-decoration: none;
 }
@@ -109,13 +109,8 @@ label {
 	color: #ebebeb !important;
 }
 
-.table {
-	background-color: #ebebeb;
-}
-
 .success {
 	background-color: #dbc691 !important;
-	/*		#66c3e4;*/
 }
 
 .table-bordered,
@@ -128,7 +123,7 @@ thead {
 	border-color: #AAAAAA !important;
 }
 
-.btn, input {
+.btn, input, .table, select {
 	background-color: #ebebeb !important;
 }
 
