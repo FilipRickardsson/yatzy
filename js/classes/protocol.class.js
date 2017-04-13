@@ -3,8 +3,9 @@ class Protocol extends Base {
 	constructor(propertyValues) {
 		super(propertyValues);
 	}
-
-	createColumn() {
+	
+	// Creates columns for all the players
+	createColumns() {
 		var tempPlayers = this.players;
 		for (let i = 0; i < this.players.length; i++) {
 			$('table').find('thead').each(function () {
@@ -23,6 +24,7 @@ class Protocol extends Base {
 		}
 	}
 
+	// Inserts potential points in the column of the current player
 	insertPotentialPoints(points, currentPlayer) {
 		let tempPlayers = this.players;
 		let protocol = this;
@@ -44,6 +46,7 @@ class Protocol extends Base {
 		});
 	}
 
+	// Inserts the sums and bonus in the column of the current player
 	insertSumsAndBonus(pointsFirstHalf, totalSum) {
 		$('.' + this.players[this.currentPlayer] + '.7').empty();
 		$('.' + this.players[this.currentPlayer] + '.7').append(pointsFirstHalf[0]);
@@ -54,6 +57,8 @@ class Protocol extends Base {
 		$('.' + this.players[this.currentPlayer] + '.18').append(totalSum);
 	}
 
+	// Finds the selected point and removes converts it from a potential points
+	// to a locked point
 	selectPoint(point) {
 		let tempPlayers = this.players;
 		let currentPlayer = this.currentPlayer;
@@ -70,6 +75,7 @@ class Protocol extends Base {
 		this.gameboard.switchPlayer();
 	}
 
+	// Removes all other potential points when one was chosen
 	clearPotentialPoints() {
 		let tempPlayers = this.players;
 		let currentPlayer = this.currentPlayer;

@@ -4,7 +4,7 @@ class PlayerWinsList extends List {
 		super(PlayerWins, items);
 	}
 
-	/* Fetches the result by the current user */
+	/* Fetches a list with the players name and number of wins */
 	readPlayerWins(callback) {
 		this.db.readPlayerWins((data) => {
 			this.push.apply(this, data);

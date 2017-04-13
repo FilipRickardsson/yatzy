@@ -6,6 +6,7 @@ class Statistics extends Base {
 		this.readStatistics();
 	}
 	
+	// Reads and presents all the gameresults and the number of wins for all the participating players
 	readStatistics() {
 		var playerWinsList = new PlayerWinsList();
 		playerWinsList.readPlayerWins(() => {
@@ -40,6 +41,7 @@ class Statistics extends Base {
 		});
 	}
 
+	// Empties the body and displays a new lobby
 	backToLobby() {
 		$('body').empty();
 		var lobby = new Lobby();

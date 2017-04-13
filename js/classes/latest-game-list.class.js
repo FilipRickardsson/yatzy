@@ -4,6 +4,7 @@ class LatestGameList extends List {
 		super(LatestGame, items);
 	}
 
+	// Fetches the id of the most recent game
 	readLatestGame(callback) {
 		this.db.readLatestGame((data) => {
 			this.push.apply(this, data);
