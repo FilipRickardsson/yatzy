@@ -4,7 +4,7 @@ class GamesResultList extends List {
 		super(GamesResult, items);
 	}
 
-	/* Fetches the result by the current user */
+	/* Fetches a list of all the gameresults */
 	readGamesResult(callback) {
 		this.db.readGamesResult((data) => {
 			this.push.apply(this, data);

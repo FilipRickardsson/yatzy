@@ -9,6 +9,7 @@ class GameBoard extends Base {
 		this.diceThrow = 0;
 	}
 
+	// Creates five dice
 	createDice() {
 		this.dice = [];
 		for (let i = 0; i < 5; i++) {
@@ -21,6 +22,7 @@ class GameBoard extends Base {
 		}
 	}
 
+	// Rolls all five dice
 	rollTheDice() {
 		for (let i = 0; i < this.dice.length; i++) {
 			this.dice[i].rollTheDie();
@@ -34,6 +36,7 @@ class GameBoard extends Base {
 		}
 	}
 
+	// Creates the protocol
 	createProtocol() {
 		var protocol = new Protocol({
 			players: this.players,
@@ -41,9 +44,10 @@ class GameBoard extends Base {
 		});
 		this.protocol = protocol;
 		protocol.display('#protocolContainer');
-		protocol.createColumn();
+		protocol.createColumns();
 	}
 
+	// Gathers all the potential points and returns them in an array
 	calcPotentialPoints() {
 		var points = [];
 		points = points.concat(this.calcFirstHalf());
@@ -64,6 +68,8 @@ class GameBoard extends Base {
 		return points;
 	}
 
+	// Calculated the potential points in the first half of the protocol
+	// and returns them in an array
 	calcFirstHalf() {
 		var firstHalfPoints = [];
 		var points = 0;
@@ -79,6 +85,7 @@ class GameBoard extends Base {
 		return firstHalfPoints;
 	}
 
+	// Checks if there is a particular number of a die face and if found returns the potential points
 	checkOccurences(nbrOfOccurences) {
 		var points = 0;
 		var occurences = 0;
@@ -97,6 +104,7 @@ class GameBoard extends Base {
 		return points;
 	}
 
+	// Checks if the dice contains a double pair
 	checkDoublePair() {
 		var occurences = [0, 0, 0, 0, 0, 0];
 		var pair1, pair2;
@@ -114,6 +122,7 @@ class GameBoard extends Base {
 		return 0;
 	}
 
+	// Checks if the dice contains a small or big straight
 	checkStraight(smallStraight) {
 		var sortedDots = [];
 		for (let i = 0; i < this.dice.length; i++) {
@@ -133,6 +142,7 @@ class GameBoard extends Base {
 		return 0;
 	}
 
+	// Checks if the dice contains a full house
 	checkFullHouse() {
 		var occurences = [0, 0, 0, 0, 0, 0];
 		var threes, pair;
@@ -162,6 +172,7 @@ class GameBoard extends Base {
 		return 0;
 	}
 
+	// Checks if the dice contains a yatzy
 	checkYatzy() {
 		var yatzy = false;
 		var occurences = 0;
@@ -179,6 +190,7 @@ class GameBoard extends Base {
 		return 0;
 	}
 
+	// Summerize all the dots of the dice
 	calcChance() {
 		var points = 0;
 		for (let i = 0; i < this.dice.length; i++) {
@@ -187,6 +199,7 @@ class GameBoard extends Base {
 		return points;
 	}
 
+	// Summerizes the points of the first half of the column
 	summerizeFirstHalf() {
 		let sum = 0;
 		let bonus = 0;
@@ -201,6 +214,7 @@ class GameBoard extends Base {
 			i++;
 		});
 
+		// If the number of points is equal or greater than 63 a bonus is added
 		if (sum >= 63) {
 			bonus = 50;
 		}
@@ -208,6 +222,7 @@ class GameBoard extends Base {
 		return [sum, bonus];
 	}
 
+	// Summerizes all the points in a column
 	summerizeWholeColumn() {
 		let sum = 0;
 		let i = 0;
@@ -220,6 +235,8 @@ class GameBoard extends Base {
 		return sum;
 	}
 
+	// Switches the player by resetting number of dice throws, enabled all the dice,
+	// inserts sum of the points, advances the current turn and checks if the game is over
 	switchPlayer() {
 		this.diceThrow = 0;
 
@@ -244,12 +261,14 @@ class GameBoard extends Base {
 
 	}
 
+	// Resets all the dice
 	resetDice() {
 		for (let i = 0; i < this.dice.length; i++) {
 			this.dice[i].resetDie();
 		}
 	}
 
+	// If the game is over all the points are collected, presented to the player(s) and inserted into the DB
 	endGame() {
 		let points = [];
 		for (let i = 0; i < this.players.length; i++) {
@@ -290,6 +309,7 @@ class GameBoard extends Base {
 		});
 	}
 
+	// Inserts a player into the DB
 	insertPlayer(userName, callback) {
 		this.db.insertPlayer({
 			userName: userName,
@@ -297,12 +317,14 @@ class GameBoard extends Base {
 		}, callback);
 	}
 
+	// Inserts a game into the DB
 	insertGame(date, callback) {
 		this.db.insertGame({
 			date: date
 		}, callback);
 	}
 
+	// Links players and games
 	insertGamesHasPlayers(gameId, username, points, callback) {
 		this.db.insertGamesHasPlayers({
 			games_id: gameId,
@@ -311,6 +333,7 @@ class GameBoard extends Base {
 		}, callback);
 	}
 
+	// Increments the number of wins for a player if number of players is greater than one
 	incrementWins(player, callback) {
 		this.db.incrementWins([player], {}, callback);
 	}
