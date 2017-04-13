@@ -297,13 +297,17 @@ class GameBoard extends Base {
 			}
 
 			if (this.players.length > 1) {
-				let highestPointsPos = -1;
+				
+				console.log(points);
+				
+				let highestPointsPos = 0;
 				for (let i = 0; i < points.length; i++) {
-					if (points[i] > highestPointsPos) {
+					if (points[i] > points[highestPointsPos]) {
 						highestPointsPos = i;
 					}
 				}
-
+				console.log(highestPointsPos);
+				console.log(this.players[highestPointsPos]);
 				this.incrementWins(this.players[highestPointsPos]);
 			}
 		});
